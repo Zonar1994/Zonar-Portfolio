@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Box personal portfolio Template</title>
+    <title>Zonar Portfolio</title>
     <link rel="icon" href="img/fav.png" type="image/x-icon">
 
     <!-- Bootstrap -->
@@ -56,20 +56,17 @@
         <!-- end box-header -->
 
         <!-- nav -->
-        <nav>
+      <nav>
             <ul class="box-primary-nav">
-                <li class="box-label">About me</li>
+                <li class="box-label">2022</li>
 
-                <li><a href="index.html">Intro</a></li>
+                <li><a href="index.html">Intro</a> <i class="ion-ios-circle-filled color"></i></li>
                 <li><a href="about.html">About me</a></li>
-                
-                <li><a href="portfolio.html">portfolio</a> <i class="ion-ios-circle-filled color"></i></li>
-              
-
-
-
+                <li><a href="creativetech.html">Creative Technology</a></li>  
+                <li><a href="duoproj.html">Duo Project</a></li>
+                <li><a href="prevproj.html">Previous Projects</a></li>
+                <li><a href="personalprojects.html">Personal Projects</a></li>
                 <li class="box-label">Follow me</li>
-
                 <li class="box-social"><a href="#0"><i class="ion-social-facebook"></i></a></li>
                 <li class="box-social"><a href="#0"><i class="ion-social-instagram-outline"></i></a></li>
                 <li class="box-social"><a href="#0"><i class="ion-social-twitter"></i></a></li>
@@ -82,7 +79,7 @@
     <!-- top-bar -->
     <div class="top-bar">
         <h1>Freight Train Experiment</h1>
-        <p><a href="#">Portfolio</a> / <a href="#">Personal Project</a> / project title</p>
+        <p><a href="#">Portfolio</a> / <a href="#">Personal Project</a> / Freight Train Experiment</p>
     </div>
     <!-- end top-bar -->
 
@@ -158,8 +155,8 @@
             <h4>How does it affect the sleep cycle?</h4>
             <ul class="cat-ul">
                 <p>An average sleep cycle lasts about 90 minutes. Ideally, you need four to six cycles of sleep every 24 hours to feel fresh and rested.
-                     Each cycle contains four individual stages: three that form non-rapid eye movement (NREM) sleep and one rapid eye movement (REM) sleep.
-                    The graphs shows the frequentie of the vibrations. These trains are passing by every hour. Meaning that the it disturbs the sleep cycle of a person
+                     Each cycle contains four individual stages: three that form non-rapid eye movement (NREM) sleep and one rapid eye movement (REM) sleep.</p>
+                    <p>The graphs shows the frequentie of the vibrations. These trains are passing by every hour. Meaning that the vibrations disturb the sleep cycle of a person
                 living next to railroad. </p>
             </ul>
 
@@ -168,10 +165,9 @@
             <h3>Creative Coding</h3>
             <h4>How could I visualize the vibration data from freight trains?</h4>
             <ul class="cat-ul">
-                <p>According to the RIVM and multiple news articles, 16% of the Dutch population, that live next to rail roads, 
-                    get sleep disturbance from passing by freight trains. The findings show that combined vibrations and noise from 
-                    railway freight affects the natrual rhythm of sleep, but extrapolation of significance for health outcomes should
-                    be approached with caution.  </p> 
+                <p>In the Creative Coding workshop I created a simple project in Processing. This showed me how I can create visuals with code. 
+                    It was simpile and easy to understand. I am already familiar with Processing and I wanted to add what I learned from the previous
+                semester. </p> 
             </ul>
             
         </div>
@@ -191,8 +187,9 @@
             <h3>Pulses</h3>
             <h4>How did I do that?</h4>
             <ul class="cat-ul">
-                <p>Software drawing instruments can follow a rhythm or abide by rules independent of drawn gestures. 
-                    This is a form of collaborative drawing in which the draftsperson controls some aspects of the image and the software controls others. </p>
+                <p> With Pulses you can use drawing instruments that can follow a rhythm or abide by rules independent of drawn gestures. 
+                    This is a form of collaborative drawing in which the draftsperson controls some aspects of the image 
+                    and the software controls others. </p>
             </ul>
 
         </div>
@@ -200,10 +197,11 @@
             <h3>Accelerometer Experiment</h3>
             <h4>Let's measure those vibrations!</h4>
             <ul class="cat-ul">
-                <p>According to the RIVM and multiple news articles, 16% of the Dutch population, that live next to rail roads, 
-                    get sleep disturbance from passing by freight trains. The findings show that combined vibrations and noise from 
-                    railway freight affects the natrual rhythm of sleep, but extrapolation of significance for health outcomes should
-                    be approached with caution.  </p> 
+                <p>I hooked up my Raspberry Pi 4 to my monitor and connected the Accelerometer sensor mpu-9250/6500. The vibrations were measured
+                    with a Python script that I got from a YouTube tutorial. The video on the right shows the Accelerometer in action!   </p> 
+                    <p>The positioning of the accelerometer was important for capturing the vibrations from the train. It had to be elevated in order
+                        to be completely still and ready to record the vibrations. 
+                    </p>
             </ul>
             
         </div>
@@ -229,7 +227,20 @@
             </ul>
 
         </div>
-
+        <div class="col-md-8">
+            <h3>Contraption</h3>
+            <h4>Elevate the Accelerometer</h4>
+            <ul class="cat-ul">
+                <p>In order to get the most accurate vibrations from the passing by Freight Trains, I will have to elevate the Accelerometer.
+                    This can be done by creating a setup with the Raspberry Pi and Accelerometer on a platform and elevating that platform  with strings.
+                    The platform will be able to swing around and allowing the Accelerometer to pick up acurate vibrations from the passing by freight trains. </p> 
+            </ul>
+            
+        </div>
+        <div class="col-md-4">
+            <img src="img/pp/dutchnews.png" alt="" class="img-responsive" />
+            <div class="h-30"></div>
+        </div>
         <div class="col-md-8">
             <h3>First Prototype</h3>
             <h4>Vibrate with vibrations?</h4>
