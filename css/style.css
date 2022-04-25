@@ -37,7 +37,7 @@ body {
     height: 100%;
     font-family: 'Poppins', sans-serif;
     line-height: 1.8;
-    color: #999
+    color: #999;
 }
 
 .no-padding {
@@ -731,6 +731,7 @@ b i:last-child {
 
 .portfolio_item .portfolio_item_hover {
     position: absolute;
+    border-radius: 25px;
     top: 0px;
     left: 0px;
     height: 100%;
