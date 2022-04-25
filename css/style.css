@@ -38,6 +38,7 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.8;
     color: #999;
+    background-color: #eaeaea;
 }
 
 .no-padding {
@@ -731,7 +732,7 @@ b i:last-child {
 
 .portfolio_item .portfolio_item_hover {
     position: absolute;
-    border-radius: 25px;
+
     top: 0px;
     left: 0px;
     height: 100%;
@@ -772,7 +773,7 @@ b i:last-child {
     display: inline-block;
     background-color: #ffbf00;
     padding: 5px 20px;
-    border-radius: 25px;
+    border-radius: 5px;
     color: #333;
     margin-top: 10px;
     -webkit-transform: translateX(-100px);
