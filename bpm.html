@@ -85,66 +85,108 @@
        <div class="col-md-12">
         <h3>Introduction </h3>
         <br>
-        <p> <h5>Interaction</h5>
+        <p> 
+            Based on the motivations behind going to a festival that I learned from my <a href="festivalfeeling.html">research</a> and my thoughts on interactions, I started developing another concept 
+            next to the Conversation Sparkers. This concept will fullfil the intrinsic rewards in a different way that the Conversation Sparkers did. During the process of 
+            creating this concept, I kept the key points of my vision in mind, and created a design that not too distracting to the preformance. 
+            <br><br>
+
+            The feeling of belonging to a bigger group, part of a large crowd of like-minded people, is one of the many interactions that we seek, when going to a festival. 
+            A simple 'Chatbooth' can give the visitors a chance to meet their favorite artist and give them that reward of 'being part of a larger crowd' or be in the presensce
+            of someone that they value very highly. 
+<br><br>
+         I decided to work on this concept that allows people to interact with the artist, but in a different way. These are the following elements I focussed on:
+<br><br>
+- The need for belonging to large crowd<br>
+- Interact with the artist in a different way<br>
+- Let the online visitors interact with the real world<br>
+<br>
+<h5>Interaction</h5>
             
-            Based on the motivations behind going to a festival that I learned from my research and my thoughts on interactions, I started developing another concept 
-            next to the Conversation Sparkers. This concept will fullfil the intrinsic rewards in a different way that the Conversation Sparkers did.
             Next to the interaction between the <b>visitors</b> there is also interaction between the <b>preformers</b> and festival visitors. There are many way to 
             allow this interaction to happen. This can be distracting to some preformers, but it can also be rewarding to both parties. Think of the preformers
             asking the audience to sing along and then point the microphone towards them. 
             
             That moment when you and your friends appear on the big screens at the festival, this can be a way to create an opportunity to allow interaction to happen
-            between the visitors and the interaction between the visitors and preformers. This is done spontaneously and people have no idea of knowing when they would
-            appear on those screens.
+            between the visitors and the interaction between the visitors and preformers.
             <br>
+            <h3>Phase one</h3>
             <br> What if a festival or concert allowed the audience to project their own content on a big screen by using their phone camera.
-            <br> Of course, that would be a terrible idea, people will misuse this and ruin the entire festival experience. 
-            But what if you could allow the audience to project <b>preselected</b>stickers or animations on the preformers? The details and specifics of these
+            <br> Of course, this could lead to problems, like people misusing this and ruining the entire festival experience. <br>
+            But what if you could allow the audience to project <b>preselected</b> stickers or animations on the preformers? The details and specifics of these
          stickers or animations can be discussed with the artist and the Effenaar. 
             
-            <br>
-            <br>
-            <h5>Implementation</h5>
-            Think of it as a snapchat lens but then it is projected on the preformers with a projector. This can be done with "Body Projection Mapping", this is a technique
-            that projects animations on top of a person and the projection moves along with the person as well.
-            <br>
-            How could I recreate that?
-            In order to project on top of a person, the projector need to understand where to project. This can be done with a simple camera in combination with body 
-            detection software. Once the software understands where the person is in relation with the projection, it can neatly cut out the shape of a live preformer.
-            <h5>Tech Needed</h5>
-            <li>Kinect</li>
-            <li>Projector</li>
-            <li>Object Detection software</li>
-            <li>Processing</li>
-          
-        </p>
+           
        </div> 
-     
-<div class="col-md-12">
+       <div class="col-md-6">
+   
+        <img width="415" height="315" src="img/clientproj/kinect.png">
+        <p>
+           The first image shows how the Kinect can detect a person and apply a skeleton map on top of them. This shows that the Kinect is capable of detecting bodies and 
+           allows the opportunity for us to apply animations to these skeletons. 
+       </p>
+       </div>
+       <div class="col-md-6">
+          <iframe width="415" height="315" src="https://www.youtube.com/embed/7La5Rg4Kqx8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+       clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+       <p>
+           The video above shows is one of my past CT Duo projects. I used the Kinect to detect my body and then applied rectangles on the depth mask. The color shifting
+           was done by adding a color randomizer to the rectangles. 
+       </p>
+       </div>
+       <div class="col-md-6">
+        <h3>First Version</h3>
+        <p>
+        <h5>Implementation</h5>
+        Think of it as a Snapchat lens but then it is projected on the preformers with a projector. This can be done with "Body Projection Mapping", this is a technique
+        that projects animations on top of a person and the projection moves along with the person as well.
+        <br>
+        How could I recreate this?<br>
+     In order to project on top of a person, the projector needs to understand where to project. This can be done with a simple camera in combination with body 
+        detection software. Once the software understands where the person is in relation with the projection, it can neatly cut out the shape of a live preformer.
+        <h5>Tech Needed</h5>
+        <li>Kinect</li>
+        <li>Projector</li>
+        <li>Object Detection software</li>
+        <li>Processing</li>
+      
+    </p>
+       </div>
+<div class="col-md-6">
     <img  src="img/clientproj/diagramflow.png" class="img-responsive" />
 </div>
-   <div class="col-md-12">
-    <h3>Phase one</h3>
-          <p>
-              Processing has examples of body tracking sketches that anyone can download for free. The Kinect can easily detect people and map out a skeleton of their body. 
-              In combination with the projector, it is possible to place the projector behind the kinect and project a silhouette on top of a person?<br>
-              I already had experience with my kinect from my previous semesters, and I applied the same knowledge over here. And with the help of 
-              Geert Jan I created the first prototype. 
 
-              
+<br>
+   <div class="col-md-12">
+
+          <p>
+           
+            With the exprience from my previous CT Duo projects, I knew where to start with this project.  And with the help of 
+            Geert Jan we created the first prototype. <br>
+              Processing has examples of body tracking sketches that anyone can download for free. The Kinect can easily detect people and map out a skeleton of their body. 
+              In combination with the projector, is it possible to place the projector behind the kinect and project a silhouette on top of a person?<br>
+        
           </p>
    </div>
-   <div class="col-md-6">
-   
-        <img src="img/clientproj/kinect.png"
-   
-      </div>
-       </div>
-        <!-- end nav -->
-    </div>
+
+ 
+    <div class="col-md-12">
+        <iframe width="815" height="515" src="https://www.youtube.com/embed/Wav1xLjNgb8" title="YouTube video player" frameborder="0" allow="accelerometer;
+         autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+         <p>
+           This is a video of the first prototype that shows how my groupmates have a projection being projected on top them. The color shifting is an unrelated issue of capturing the projection on film. 
+            With the help of Geert, I was able to project a body mask on my groupmates. 
+        </p>
+     </div>
+
+     <div class="col-md-6">
+<h3>Phase two</h3>
+ In the second Phase I exprimented with different callibrations with the Kinect in relation with the projector. For me to understand what the best positioning is for the Kinect
+ and Projector, I started to visualize it digitally. 
+     </div>
 
     <!-- top-bar -->
-    
+    </div>
     <!-- end top-bar -->
 
     <!-- main-container -->
