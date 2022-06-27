@@ -135,7 +135,7 @@
        </p>
        </div>
        <div class="col-md-6">
-        <h3>First Version</h3>
+
         <p>
         <h5>Implementation</h5>
         Think of it as a Snapchat lens but then it is projected on the preformers with a projector. This can be done with "Body Projection Mapping", this is a technique
@@ -178,7 +178,17 @@
             With the help of Geert, I was able to project a body mask on my groupmates. 
         </p>
      </div>
+<div class="col-md-6">
+    <img width="60%" height="60%" src="img/clientproj/snippet 3.png">
 
+</div>
+<div class="col-md-6">
+    <h5>Processing code</h5>
+    I downloaded the needed Kinect V2 library in order to use the Kinect with Processing. The Kinect can give the 
+    raw body data from 6 individual people. 
+    Processing then displays these users and also shows the numbers of users detected. 
+    I changed the background to 0 and only showed the body mask in order to see it in the proof of concept. 
+</div>
      <div class="col-md-12">
 <h3>Phase two</h3>
  In the second Phase I exprimented with different callibrations with the Kinect in relation with the projector. For me to understand what the best positioning is for the Kinect
@@ -186,16 +196,100 @@
  All of these steps were taken with the keypoints as mentioned in the introduction. 
      </div>
 <div class="col-md-6">
-    <h3>First version</h3>
+  <h5>Visuals</h5>
     <p>
-           In the first version I experimented with different visuals, understanding 
+           In the first version I experimented with different visuals, this showed me that it would be better for the preformers not to have their entire 
+           body being projected. Stickers would still be better at this point. 
+           <h5>Concept Sketch</h5>
+           <img width="450px" height="250" src="img/clientproj/placement.png">
     </p>
+    
 </div>
      <div class="col-md-6">
            <img src="img/clientproj/bpm.gif">
 
      </div>
+     <div class="col-md-12">
+        <h5>Prototype</h5>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/ADSFg-Hw0sQ" title="YouTube video player" frameborder="0"
+     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+     <p>
+      This prototype shows a heart being projected on top of my groupmate. This prototype does not contain the interaction part of the concept, but it is only 
+      a proof of concept of how the projection would take place. The proof of concept working, but the heart that was being displayed did not seem to have a transparent
+      background, even though it was a transparent PNG. 
 
+     </p>
+     </div>
+<br>
+<br>
+<br>
+     <div class="col-md-2">
+        <h5>Processing code</h5>
+        In order for us to apply images on top of the users we need acces to the image pixels. Next to that the Sketch also needs to get the body track image combined 
+        with the depth information. 
+
+     </div>
+     <div class="col-md-10">
+        <img width="100%" height="100%" src="img/clientproj/snippet2.png">
+     </div>
+   
+<div>
+   
+   
+</div>
+<div class="col-md-12">
+    <h3>Phase three</h3>
+    <p>
+        In this phase I had a great deal of help from Geert-Jan, he managed to draw a circle on a body mask. Instead of loading in the image pixels from a PNG. This looked a lot better and 
+        was in line with the proof of concept. Next to that I also created a prototype for the website design of the BPM functionality. This functionality had to be created in the Session platform,
+        that is why I created the functionality on top of the Sessions platform. 
+        
+    </p>
+</div>
+     <div class="col-md-12">
+        <h3>
+            First version
+     </div>
+
+     <div class="col-md-6">
+    </h3>
+    <h5>Prototype</h5>
+<p>
+    The gif on the right shows how a circle is being drawn on top of the body mask. The setup of the projector and Kinect remain the same as in the first phase. The next step is to remove the body 
+    mask and only show the circle. Next to that, the Kinect had some issues tracking my body from time to time. This was a issue with the amount of users it tracks and that the array some times cycles through
+    these in the wrong way. 
+</p>
+     </div>
+     <div class="col-md-6">
+<img src="img/clientproj/bpm3.gif">
+     </div>
+
+     <div class="col-md-12">
+        <h3>Session platform Design</h3>
+     </div>
+     <div class="col-md-6">
+        <p>
+            for the 
+        </p>
+        <a href="https://www.figma.com/proto/eS0FECeqqe6d8WyCwixiLg/bp?node-id=248%3A57&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=248%3A19&show-proto-sidebar=1"> <button>Figma Design</button>
+        </a>
+     </div>
+     <div class="col-md-12">
+        <h3>
+            Final version
+     </div>
+
+     <div class="col-md-6">
+    </h3>
+    <h5>Prototype</h5>
+<p>
+   This is the final Expo of the group project, we used the final version to show off our projects. The timelapse on the right shows how my groupmates interact with the prototype. The projector  
+   projects a circle on top of a body and it stays on top of them when they move.  
+</p>
+     </div>
+     <div class="col-md-6">
+<img src="img/clientproj/finalversion.gif">
+     </div>
     <!-- top-bar -->
     </div>
     <!-- end top-bar -->
