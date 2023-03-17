@@ -77,26 +77,8 @@ $(window).load(function () {
     });
 });
 
-function openPopup() {
-    // Specify the URL of the PDF file
-    var pdfUrl = "/Web ";
   
-    // Create a new window with the PDF embedded
-    var popupWindow = window.open("", "popupWindow", "width=600,height=600");
-    popupWindow.document.write("<embed src='" + pdfUrl + "' width='100%' height='100%' type='application/pdf'>");
-  }
-  
-  var text = "Welcome to my reading guide for semester six! I'm excited to work on a range of creative projects
-  that will challenge my skills and creativity. This reading guide covers the approach and results of projects that
-  I will be working on this semester.
-  
-  The semester is divided into three main projects: <b>start-up project</b>, <b>client project</b>, and <b>individual project</b>. During the
-  first six weeks, I'll work on a start-up project to come up with innovative ideas. Next, I'll spend seven weeks working
-  on a client project, gaining experience working with external clients. Finally, I'll have the opportunity to explore a
-  topic that interests me during the last five weeks.
-
-  I'll document my approach and results for each project to reflect on my progress, identify areas for improvement, and
-  track my learning outcomes.";
+  var text = "";
 var delay = 100; // milliseconds between each character
 
 function typeEffect() {
