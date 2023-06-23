@@ -237,7 +237,17 @@ window.Modernizr = (function( window, document, undefined ) {
         return ((property in object) && is(object.constructor.prototype[property], 'undefined'));
       };
     }
+    function expandImage(src) {
+      var expandedImage = document.getElementById('expandedImage');
+      expandedImage.src = src;
+      var overlay = document.querySelector('.overlay');
+      overlay.style.display = 'flex';
+  }
 
+  function closeOverlay() {
+      var overlay = document.querySelector('.overlay');
+      overlay.style.display = 'none';
+  }
     // Adapted from ES5-shim https://github.com/kriskowal/es5-shim/blob/master/es5-shim.js
     // es5.github.com/#x15.3.4.5
 

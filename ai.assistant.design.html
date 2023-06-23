@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Portfolio Zonar Caldera</title>
+    <link rel="icon" href="img/fav.png" type="image/x-icon">
+    <link href="https://fonts.cdnfonts.com/css/cascadia-code" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="ionicons/css/ionicons.min.css" rel="stylesheet">
+
+    <!-- main css -->
+    <link href="css/style.css" rel="stylesheet">
+
+
+    <!-- modernizr -->
+    <script src="js/modernizr.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <!-- Preloader -->
+
+    <!-- end Preloader -->
+
+    <div class="container-fluid">
+        <!-- box header -->
+        <header class="box-header">
+            <div class="box-logo">
+                <a href="index.html"><img src="img/logo.png" width="80" alt="Logo"></a>
+            </div>
+            <!-- box-nav -->
+            <a class="box-primary-nav-trigger" href="#0">
+                <span class="box-menu-text">Menu</span><span class="box-menu-icon"></span>
+            </a>
+            <!-- box-primary-nav-trigger -->
+        </header>
+        <!-- end box header -->
+
+        <!-- nav -->
+        <nav>
+            <ul class="box-primary-nav">
+                <li class="box-label">2023</li>
+
+
+                <li><a href="index.html">Home</a> <i class="ion-ios-circle-filled color"></i></li>
+                <li><a href="learning.html"><b>Learning Outcomes</b></a></li>
+
+                <li><a href="startup.html">Start-up Project</a></li>
+                <li><a href="timeline.html">Client Project</a></li>
+
+                <li class="box-label">Follow me</li>
+                <li class="box-social"><a href="#0"><i class="ion-social-facebook"></i></a></li>
+                <li class="box-social"><a href="#0"><i class="ion-social-instagram-outline"></i></a></li>
+                <li class="box-social"><a href="#0"><i class="ion-social-twitter"></i></a></li>
+                <li class="box-social"><a href="#0"><i class="ion-social-dribbble"></i></a></li>
+            </ul>
+        </nav>
+        <!-- end box-intro -->
+    </div>
+
+    <div class="container main-container">
+        <div class="col-md-12">
+            <h3>Introduction</h3>
+            <p>
+                The Chatbot Email Assistant is a system designed to automate email processing and provide employee
+                support within an organization. It utilizes the n8n workflow automation tool and various nodes to handle
+                incoming emails and categorize them based on the department they should be routed to. This development
+                page provides an overview of the system's workflow and the functionalities of each node involved.
+            </p>
+        </div>
+    </div>
+    <div class="container main-container">
+        <div class="col-md-6">
+            <h3>Overview</h3>
+            <p>
+                The Chatbot Email Assistant automates email processing by categorizing incoming emails based on content
+                and routing them to the appropriate department. It utilizes n8n workflow automation and CHATGPT API for
+                decision-making. Each department has an assistant node that generates responses to emails, providing
+                efficient employee support.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <img src="img/n8nworkflow.png" width="500px" onclick="expandImage(this.src)">
+        </div>
+    </div>
+    <div class="container main-container">
+        <div class="col-md-12">
+            <h3>Nodes</h3>
+            <h4>The Chatbot Email Assistant workflow consists of the following nodes:</h4>
+            <br>
+            <b>Node 1: INCOMING EMAILS</b>
+            <p>
+                This node listens to incoming emails using the IMAP protocol and connects to the Thunderbird email
+                client. It captures the incoming emails and makes them available for further processing within the n8n
+                workflow.
+            </p>
+            <b>Node 2: DEPARTMENT SELECTOR</b>
+            <p>
+                After an email is received by the INCOMING EMAILS node, the DEPARTMENT SELECTOR node analyzes the email
+                content to determine the department it should be sent to. This node leverages the CHATGPT API to make
+                the
+                decision. It prompts CHATGPT with the email content and expects a response containing the department
+                name.
+            </p>
+            <p>
+                Prompt Details:
+            </p>
+            <ul>
+                <li>Temperature: A temperature value of 0 is used to generate deterministic responses from the CHATGPT
+                    API,
+                    ensuring focused and consistent responses.</li>
+                <li>Tokens: The token limit of 5 ensures that the generated response remains concise and within the
+                    expected
+                    length of a single word or a few short words.</li>
+            </ul>
+            <b>Node 3: SWITCH</b>
+            <p>
+                The SWITCH node receives the department name determined by the DEPARTMENT SELECTOR node and routes the
+                email
+                to the corresponding department's assistant. The available departments are HR, Marketing, Sales, and
+                Finance.
+                Each department has its own assistant responsible for processing the emails.
+            </p>
+            <b>Node 4: The Assistants</b>
+            <p>
+                These nodes process the emails received by the INCOMING EMAILS node and routed to the respective
+                department
+                assistants. Each assistant node utilizes the CHATGPT API to generate a response to the email. The prompt
+                provided to CHATGPT includes three sections: Role Assignment, Data Reference, and Email Content. These
+                sections guide CHATGPT on how to behave and provide the necessary information for formulating a proper
+                response.
+            </p>
+            <b>
+                Node 5: ASSISTANT REPLIES</b>
+
+            <p>
+                The formulated response generated by the assistants is sent as a reply to the corresponding email
+                received in
+                the INCOMING EMAILS node. The email is sent using the appropriate SMTP settings to ensure the response
+                reaches
+                the original sender.
+            </p>
+        </div>
+    </div>
+    <div class="container main-container">
+        <div class="col-md-12">
+            <h3>Training data</h3>
+            <p>
+                The AI assistant needs to be able to provide the correct information from the correct data. I wanted to
+                do this
+                by simply prompting the information to the assistant and asking to formulate a correct response. But due
+                to the
+                token limitations of the Chatgpt API, I decided to create 4 different departments. Marketing, H&R, Sales
+                and
+                Finance. Each department will be prompted in the same way but with their own dataset. You can download
+                the
+                complete data set over here: <a href="./results/fakedata.txt">fakedata.text</a>
+            </p>
+        </div>
+    </div>
+    <div class="container main-container">
+        <div class="col-md-12">
+            <h3>Experimenting with ChatGPT in the Playground environment</h3>
+            <p>
+                I wanted to find out what model would be the best for this proof of concept. The model needed to respond
+                to
+                emails correctly and output an email format. The models can also be adjusted with numerous parameters,
+                but I will
+                be focusing on two parameters. The temperature and the amount of tokens. I conducted a quick experiment
+                with the
+                text davinci model and find out what the best temperature would be best for the emailing assistant.
+            </p>
+            <p>
+                <b>Text-davinci-003:</b>
+                Can do any language task with better quality, longer output, and consistent instruction-following than
+                the curie,
+                babbage, or ada models. Also supports some additional features such as inserting text.
+            </p>
+            <p>
+                <b>Temperature:</b>
+                Controls randomness: lowering results in less random completions. As the temperature approaches zero,
+                the model
+                will become more deterministic and repetitive.
+            </p>
+            <p>
+                <b>Tokens:</b>
+                The maximum number of tokens to generate. Request can use up to 2,000 tokens or 4,000 tokens shared
+                between prompt
+                and completion. The exact limit varies by model. (One token is roughly 4 characters for normal English
+                text)
+            </p>
+        </div>
+    </div>
+    <div class="container main-container">
+        <div class="col-md-6">
+            <h3>The prototype</h3>
+            <p>
+                The N8N workflow starts off with a simple Email trigger node that is using IMAP (Internet Message Access
+                Protocol).
+            </p>
+            <p>
+                You can see here that I asked about a specific project, related to the fake data of course. Asking about
+                the Gamma
+                project and FAQ from the marketing department.
+            </p>
+            <p>
+                Now the N8N workflow is listening to the incoming email.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <img src="img/firstemail.png" width="600px" onclick="expandImage(this.src)">
+
+        </div>
+    </div>
+
+    <div class="container main-container">
+        <div class="col-md-6">
+            <img src="img/reply.png" width="500px">
+
+        </div>
+        <div class="col-md-6">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <p>Over here you can see how the email assistant retrieved the correct data about the <b>Gamma project</b>
+                and the <b>FAQ</b>s.
+            </p>
+        </div>
+        <a href="./results/fakedata.txt" target="_blank">
+            <button class="btn-3d">Fake Data</button>
+        </a>
+        <br>
+        <br>
+        <p>Search for the Marketing Department in the text.file</p>
+</div>
+
+    
+    <div class="container main-container">
+        <div class="col-md-12">
+            <h3>Getting Started</h3>
+            <p>
+                To set up the Chatbot Email Assistant system, follow these steps:
+            </p>
+            <ol>
+                <li>Install n8n by following the official installation guide available at <a
+                        href="https://n8n.io">n8n.io</a>.</li>
+                <li>Set up the necessary credentials for the Thunderbird email client, IMAP server, and SMTP server.
+                </li>
+                <li>Create a new n8n workflow.</li>
+                <li>Configure each node as described in the Nodes Overview section, ensuring proper connections between
+                    nodes.</li>
+                <li>Customize the prompt and data references in the assistant nodes according to your specific
+                    requirements.</li>
+                <li>Save and activate the workflow.</li>
+
+            </ol>
+            <h3>Additional Resources</h3>
+            <p>Here are some additional resources to help you with the Chatbot Email Assistant system:</p>
+            <ul>
+                <li><b>N8N:</b></li>
+                <ul>
+                    <li><a href="https://n8n.io">n8n Official Website:</a> Visit the official website to find
+                        information about
+                        n8n's features, use cases, and download n8n.</li>
+                    <li><a href="https://docs.n8n.io">n8n Documentation:</a> Access the official documentation for
+                        detailed guides,
+                        tutorials, and reference materials on using n8n, configuring nodes, creating workflows, and
+                        more.</li>
+                </ul>
+                <li><b>Thunderbird:</b></li>
+                <ul>
+                    <li><a href="https://www.thunderbird.net">Thunderbird Website:</a> Explore the official website of
+                        Thunderbird
+                        to download the Thunderbird email client and access additional resources.</li>
+                </ul>
+                <li><b>Scaling Up for an Organization:</b></li>
+                <ul>
+                    <li>The Chatbot Email Assistant system can be scaled up to support larger organizations.
+                        Implementing additional
+                        features, integrating with other systems, and optimizing the workflow can help meet the specific
+                        needs of
+                        your organization.</li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+    <!-- portfolio div -->
+
+    <!-- footer -->
+    <footer>
+        <div class="container-fluid">
+            <p class="copyright">Zonar Portfolio 2023</p>
+        </div>
+    </footer>
+    <!-- end footer -->
+
+    <!-- back to top -->
+    <a href="#0" class="cd-top"><i class="ion-android-arrow-up"></i></a>
+    <!-- end back to top -->
+
+
+
+    <!-- jQuery -->
+    <script src="js/jquery-2.1.1.js"></script>
+    <!--  plugins -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/animated-headline.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+
+
+    <!--  custom script -->
+    <script src="js/custom.js"></script>
+
+    <!-- google analytics  -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-76796224-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+</body>
+
+</html>
