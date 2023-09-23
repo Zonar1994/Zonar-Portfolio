@@ -1,684 +1,0 @@
-<html><head><meta charset="utf-8" /><title>Tabel export: Bedrijfsgegevens; omzetontwikkeling (stijgers-dalers), SBI 2008</title></head><body><div class="subtitle-container" ng-attr-data-printprefixtitle="{{ 'dictionary.Title' | translate }}" data-printprefixtitle="Titel">
-            <h1 class="title ng-binding">Bedrijfsgegevens; omzetontwikkeling (stijgers-dalers), SBI 2008</h1>
-            <div class="modifiedDate-container">
-                <h5 class="modifiedDate ng-binding">Gewijzigd op: 28 februari 2023</h5>
-            </div>
-        </div><style type="text/css">h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-weight: 500; line-height: 1.1; } a:hover, a:focus { color: #2A6496; text-decoration: underline; } a:active, a:hover { outline: 0px none; } a { color: #428BCA; text-decoration: none; } /*@-ms-viewport {width:auto!important} http://windowssecrets.com/forums/showthread.php/168281-Disappearing-scrollbar-in-IE11 */
-/*  TODO: Download.less maken voor styling in downloads, onderstaande h1 daarheen verplaatsen */
-.title {
-  font-family: "Akko Regular W01", Helvetica, Arial, sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: #163a72;
-}
-#pivotTableOutput {
-  margin: 150px 20px 20px 20px;
-}
-#pivotTableInfo {
-  display: none;
-}
-#pivotTableInfo.bordered {
-  display: block;
-  background-color: #d1ecf1;
-  border: 1px solid #0c5460;
-  margin-top: 10px;
-  color: #0c5460;
-}
-#pivotTableInfo.bordered .btn-small {
-  color: #0c5460;
-  border: none;
-  margin: 10px 10px 0 0;
-  cursor: pointer;
-}
-#pivotTableInfo #pivotInfoText {
-  font-family: "Akko Regular W01", Helvetica, Arial, sans-serif;
-  padding-left: 10px;
-}
-.pivotTableInfo {
-  display: none;
-}
-.pivotTableInfo.bordered {
-  display: block;
-  background-color: #d1ecf1;
-  border: 1px solid #0c5460;
-  margin-top: 10px;
-  color: #0c5460;
-}
-.pivotTableInfo.bordered .btn-small {
-  color: #0c5460;
-  border: none;
-  margin: 10px 10px 0 0;
-  cursor: pointer;
-}
-.pivotTableInfo .pivotInfoText {
-  font-family: "Akko Regular W01", Helvetica, Arial, sans-serif;
-  padding-left: 10px;
-}
-.pivotTableWarning {
-  display: none;
-}
-.pivotTableWarning.bordered {
-  display: block;
-  background-color: #fff3cd;
-  border: 1px solid #856404;
-  margin: 10px 0;
-  color: #856404;
-}
-.pivotTableWarning.bordered .btn-small {
-  color: #856404;
-  border: none;
-  margin: 10px 10px 0 0;
-  cursor: pointer;
-}
-.pivotTableWarning h3 {
-  margin-top: 15px;
-  color: #856404;
-}
-.pivotTableWarning .pivotWarningText {
-  font-family: "Akko Regular W01", Helvetica, Arial, sans-serif;
-  padding-left: 10px;
-}
-#pivotTablePanel {
-  border: 0;
-  margin-bottom: 0;
-}
-#pivotTablePanel .tooltip-arrow {
-  border-top-color: #163a72;
-  border-bottom-color: #163a72;
-}
-#pivotTablePanel .tooltip-inner {
-  white-space: normal;
-  background-color: #163a72;
-  padding: 8px;
-  color: #fff;
-  font-family: "Akko Regular W01", Helvetica, Arial, sans-serif;
-  font-size: 100%;
-  text-align: left;
-}
-div .maincontent #pivotTableOutput {
-  margin: -10px 3px 0 0;
-  padding-top: 10px;
-}
-.pvtUi {
-  color: #000;
-}
-.pvtAttr {
-  font-weight: bold;
-}
-table.pvtTable {
-  font-size: 12px;
-  text-align: left;
-  border-collapse: collapse;
-}
-table.pvtTable thead th {
-  border-bottom: 1px solid #ececec;
-}
-table.pvtTable thead th.pvtContainer {
-  border-bottom: none;
-}
-table.pvtTable th.lastcol {
-  padding-right: 15px;
-}
-table.pvtTable th.pvtUpperLeftCorner {
-  border: 1px solid #fff;
-}
-table.pvtTable td.lastcol {
-  padding-right: 15px;
-}
-table.pvtTable tbody tr.first th {
-  border-top: 1px solid #ececec;
-  margin-top: 5px;
-}
-table.pvtTable tr th {
-  background-color: #fff;
-  font-size: 12px;
-  padding-left: 5px;
-  padding-right: 5px;
-  font-weight: normal;
-}
-table.pvtTable tr th.pvtColLabelUnit {
-  background-color: #fff;
-  font-weight: bold;
-  vertical-align: bottom;
-  border-bottom: none;
-}
-table.pvtTable tr th.spacer {
-  background-color: inherit;
-  border-bottom: 1px solid #777777;
-}
-table.pvtTable tr td {
-  color: #000;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: bottom;
-  text-align: right;
-  white-space: nowrap;
-}
-table.pvtTable tr.last td,
-table.pvtTable tr.last th {
-  border-bottom: 1px solid #ececec;
-}
-table.pvtTable tr.first .pvtRowLabel.topics {
-  border-top: 1px solid #ececec;
-}
-table.pvtTable .pvtContainer div.topic {
-  margin-left: 0;
-  font-weight: normal;
-}
-table.pvtTable .pvtContainer div.topicgroup {
-  margin-left: 0;
-  font-weight: normal;
-}
-table.pvtTable .pvtContainer > div .topic {
-  font-weight: normal;
-}
-table.pvtTable .pvtContainer .pvtAttrSingle > div .topic {
-  margin-left: 0;
-  margin-top: 0;
-}
-table.pvtTable .pvtContainer .pvtAttrSingle > div .topicgroup {
-  margin-left: 0;
-  margin-top: 0;
-  font-weight: bold;
-}
-table.pvtTable .pvtContainer .pvtAttrSingle > div .topicgroup > div.topic {
-  margin-left: 0;
-  margin-top: 0;
-}
-table.pvtTable .pvtContainer .pvtAttrSingle > div .topicgroup > div.topicgroup {
-  margin-left: 0;
-  margin-top: 0;
-}
-table.pvtTable .pvtRowLabel {
-  background-color: #ececec;
-  text-align: left;
-  vertical-align: top;
-  white-space: nowrap;
-}
-table.pvtTable .pvtRowLabel div.topic {
-  margin-left: 12px;
-  font-weight: normal;
-}
-table.pvtTable .pvtRowLabel div.topicgroup {
-  margin-left: 12px;
-  font-weight: normal;
-}
-table.pvtTable .pvtRowLabel > div.topic {
-  margin-left: 0;
-  margin-top: 0;
-  font-weight: normal;
-  padding-top: 5px;
-}
-table.pvtTable .pvtRowLabel > div.topicgroup {
-  margin-left: 0;
-  margin-top: 0;
-  font-weight: bold;
-}
-table.pvtTable .pvtRowLabel > div.topicgroup > div.topic {
-  margin-left: 0;
-  margin-top: 0;
-}
-table.pvtTable .pvtRowLabel > div.topicgroup > div.topicgroup {
-  margin-left: 0;
-  margin-top: 0;
-}
-table.pvtTable .pvtRowLabel.topics {
-  border-bottom-style: none;
-  border-top-style: none;
-}
-table.pvtTable .pvtRowLabel.notopics {
-  padding-top: 5px;
-}
-table.pvtTable .pvtRowLabel.last {
-  border-bottom: 1px solid #ececec;
-}
-table.pvtTable .pvtRowLabel .topicgroup.start {
-  padding-top: 5px;
-}
-table.pvtTable .pvtColLabel {
-  border-bottom: 1px solid #ececec;
-  text-align: left;
-  vertical-align: bottom;
-}
-table.pvtTable .pvtColLabel div.topic {
-  margin-left: 12px;
-  font-weight: normal;
-}
-table.pvtTable .pvtColLabel div.topicgroup {
-  margin-left: 12px;
-  font-weight: normal;
-}
-table.pvtTable .pvtColLabel > div.topic {
-  margin-left: 0;
-  margin-top: 0;
-  font-weight: normal;
-}
-table.pvtTable .pvtColLabel > div.topicgroup {
-  margin-left: 0;
-  margin-top: 0;
-  font-weight: bold;
-}
-table.pvtTable .pvtColLabel > div.topicgroup > div.topic {
-  margin-left: 0;
-  margin-top: 0;
-}
-table.pvtTable .pvtColLabel > div.topicgroup > div.topicgroup {
-  margin-left: 0;
-  margin-top: 0;
-}
-table.pvtTable .pvtColLabel.toprow {
-  font-weight: bold;
-  border-right: 5px solid #fff;
-  padding-left: 1px;
-}
-table.pvtTable .pvtColLabel.toprow > div.topic {
-  font-weight: bold;
-  border-right: 5px solid #fff;
-  padding-left: 1px;
-}
-table.pvtTable .pvtColLabel.toprow:nth-child(2) {
-  padding-left: 5px;
-}
-table.pvtTable .pvtColLabel.bottomrow {
-  text-align: right;
-}
-.pvtAggregator {
-  margin-bottom: 5px ;
-}
-.pvtRendererAxisContainer {
-  border: 0 none;
-  margin: 0;
-  padding: 0;
-}
-.pvtRendererAxisContainer li {
-  display: inline-block;
-  list-style-type: none;
-  background-color: #fff;
-  padding: 0;
-  border: 2px solid #ececec;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
-.pvtRendererAxisContainer li > span {
-  display: table-cell;
-  vertical-align: top;
-}
-.pvtRendererAxisContainer li .pvtAttr {
-  text-align: right;
-  -webkit-user-select: none;
-  /* Chrome all / Safari all */
-  -moz-user-select: none;
-  /* Firefox all */
-  -ms-user-select: none;
-  /* IE 10+ */
-  user-select: none;
-  background-color: #ececec;
-  padding: 4px;
-  white-space: nowrap;
-  cursor: move;
-  margin: 0;
-}
-.pvtRendererAxisContainer li .ui-draggable-dragging {
-  max-height: 30px;
-  border: 2px solid #0581a2;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-.pvtRendererAxisContainer li .pvtAttrSingle {
-  padding-left: 4px;
-  padding-top: 4px;
-  -webkit-user-select: none;
-  /* Chrome all / Safari all */
-  -moz-user-select: none;
-  /* Firefox all */
-  -ms-user-select: none;
-  /* IE 10+ */
-  user-select: none;
-  white-space: nowrap;
-  cursor: default;
-}
-.pvtRendererAxisContainer li .pvtAttrEditHandle {
-  background-color: #fff;
-  white-space: nowrap;
-  vertical-align: middle;
-  font-family: FontAwesome;
-  font-weight: normal;
-  font-size: 10pt;
-  cursor: pointer;
-  padding: 0 4px 0 4px;
-}
-.pvtRendererAxisContainer li.dragging {
-  opacity: 0.5;
-}
-.pvtRendererAxisContainer li.ignore {
-  min-width: 60px;
-  border-color: #fff;
-  cursor: default;
-}
-.pvtRendererAxisContainer li.ui-state-highlight {
-  background-color: transparent;
-  -webkit-border-radius: 5px;
-  padding: 6px 3px 3px 3px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  border: 2px dotted #0581a2;
-  min-width: 60px;
-}
-.pvtRendererAxisContainer li.drop-hover {
-  background-color: #fff;
-  border: 2px solid #0581a2;
-  padding: 6px 3px 3px 3px;
-  min-width: 60px;
-}
-.pvtRendererAxisContainer li.sortable-chosen span .pvtAttrSingle {
-  display: none;
-}
-.pvtRendererAxisContainer li.pvtPlaceholder {
-  -webkit-border-radius: 5px;
-  padding: 3px 3px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  border: 1px dashed #000;
-}
-.pvtRendererAxisContainer.vals li.ignore {
-  padding: 0;
-}
-.pvtHorizList {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-}
-.pvtHorizList li {
-  margin-right: 4px;
-  margin-bottom: 5px;
-}
-.pvtContainer div.bottomborder {
-  margin-top: 6px;
-  border-bottom: 1px solid #ececec;
-}
-.pvtVertList {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-}
-.pvtVertList li {
-  margin-top: 5px;
-}
-.pvtVals {
-  border: 0 none;
-  margin: 0;
-  padding: 0;
-}
-.pvtAxisContainer li.ignore {
-  min-width: 60px;
-  border-color: #fff;
-  cursor: default;
-}
-.pvtAxisContainer li.pvtPlaceholder {
-  -webkit-border-radius: 5px;
-  padding: 3px 3px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  border: 1px dashed #000;
-}
-li.sortable-chosen span.pvtAttrEditHandle {
-  display: none;
-}
-td.pvtRendererAxisContainer.pvtRows,
-td.pvtAxisContainer.pvtRows {
-  vertical-align: top;
-}
-.pvtTriangle {
-  cursor: pointer;
-  color: grey;
-}
-.pvtFilteredAttribute {
-  font-style: italic;
-}
-.pvtFilterBox {
-  z-index: 100;
-  width: 280px;
-  border: 1px solid #777777;
-  background-color: #fff;
-  position: absolute;
-  padding: 20px;
-  text-align: center;
-}
-.pvtFilterBox h4 {
-  margin: 0;
-}
-.pvtFilterBox p {
-  margin: 1em auto;
-}
-.pvtFilterBox label {
-  font-weight: normal;
-}
-.pvtFilterBox input[type='checkbox'] {
-  margin-right: 5px;
-}
-.pvtCheckContainer {
-  text-align: left;
-  overflow: scroll;
-  max-height: 200px;
-}
-.pvtCheckContainer p {
-  margin: 5px;
-}
-.pvtRendererArea {
-  padding: 5px;
-}
-.pvtRenderer {
-  display: none;
-}
-#bron {
-  padding: 4px 0 0 5px;
-}
-@media (max-width: 767px) {
-  #bron {
-    padding-left: 2px;
-  }
-  table.pvtTable {
-    margin-left: 12px;
-  }
-  div.maincontent #pivotTableOutput {
-    margin: -10px 0 0 -15px;
-  }
-}
-body { font-family: Arial, sans-serif; } .subtitle { padding: 12px 20px 12px 32px; color: #163a72; font-size: 16px; width: auto; margin: 0; } @media(min-width: 992px) { .subtitle { border-radius: 0 8px 8px 0; width: auto; display: inline-block; }} span.pvtAttrEditHandle, .pvtRendererAxisContainer li, .pvtAxisContainer li { cursor: inherit; } .source { padding: 12px ; font-size: 8pt; font-family: Arial, sans-serif; } span.pvtAttrEditHandle { visibility: hidden; display:none; } .pvtVertList { text-align:left;} th { text-align: left;} .modifiedDate { padding: 0px 20px 0px 32px; background-color: white; color: #163a72; font-size: 12px; border-left: none; border-right: none; width: auto; display: block; margin: 0; height: 26px; line-height: 26px; } @media(max-width: 767px) { .modifiedDate { padding: 0px 20px 0px 32px; background-color: white; color: #163a72; font-size: 12px; border: 1px solid #ececec; border-left: none; border-right: none; margin: 0; width: auto; display: block; line-height: 26px; }} @media(min-width: 992px) { .modifiedDate { padding: 0px 20px 0px 32px; background-color: white; color: #163a72; font-size: 12px; border: 1px solid #ececec; border-left: none; border-right: none; width: auto; display: inline-block; margin: 0; line-height: 26px; }} .modifiedDate-container { margin-bottom: 30px; margin-top: -1px; } .alert-info { color: #3a87ad; background-color: #d9edf7; border-color: #bce8f1; }.alert { padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: 4px; font-size: 12px; }h5.onderwerp { font-size: 8pt; font-style: italic; font-weight: normal; } pre { font-family: inherit; font-weight: normal; word-break: inherit; word-wrap: inherit; }</style><table class="pvtTable" data-numrows="126" data-numcols="7"><thead><tr><th class="pvtContainer" rowspan="1" colspan="11"><ul class="pvtRendererAxisContainer pvtVertList vals clearfix"><li class="ignore"></li></ul></th></tr><tr><th class="spacer" rowspan="1" colspan="11"></th></tr><tr><th class="pvtUpperLeftCorner" colspan="4" rowspan="1"></th><th class="pvtContainer" colspan="7" rowspan="1"><ul class="pvtRendererAxisContainer pvtHorizList cols clearfix"><li class="axis_0"><span class="pvtAttr ui-draggable ui-draggable-handle">Onderwerp</span><span class="pvtAttrEditHandle">&nbsp;</span></li><li class="ignore"></li></ul><div class="bottomborder"></div></th></tr><tr><th class="pvtContainer left" colspan="4" rowspan="2"><ul class="pvtRendererAxisContainer pvtVertList rows clearfix"><li class="axis_1"><span class="pvtAttr ui-draggable ui-draggable-handle" style="width: 192.393px;">Bedrijfsomvang</span><span class="pvtAttrEditHandle">&nbsp;</span></li><li class="axis_2"><span class="pvtAttr ui-draggable ui-draggable-handle" style="width: 192.393px;">Bedrijfstakken/branches (SBI 2008)</span><span class="pvtAttrEditHandle">&nbsp;</span></li><li class="axis_3"><span class="pvtAttr ui-draggable ui-draggable-handle" style="width: 192.393px;">Perioden</span><span class="pvtAttrEditHandle">&nbsp;</span></li><li class="ignore"></li></ul></th><th class="pvtColLabel bottomrow toprow" colspan="1"><div class="topicgroup start" data-original-title="" title=""><div title="" data-placement="auto" data-original-title="Percentage bedrijven waarvan de omzet in deze periode met meer dan een half procent is gestegen ten opzichte van de zelfde periode een jaar eerder.<br /><br />Voor bedrijven met minder dan 50 werkzame personen zijn de gegevens gebaseerd op registerinformatie van de Belastingdienst.<br />Voor bedrijven met 50 of meer werkzame personen zijn de gegevens<br />gebaseerd op integrale waarneming door het CBS.">Bedrijven met omzetstijging</div><div class="topic" data-key="AlleStijgers_1" title="" data-placement="auto" data-original-title="Percentage bedrijven waarvan de omzet in deze periode met meer dan een half procent is gestegen ten opzichte van de zelfde periode een jaar eerder.<br /><br />Voor bedrijven met minder dan 50 werkzame personen zijn de gegevens gebaseerd op registerinformatie van de Belastingdienst.<br />Voor bedrijven met 50 of meer werkzame personen zijn de gegevens<br />gebaseerd op integrale waarneming door het CBS.">Alle stijgers</div></div></th><th class="pvtColLabel bottomrow toprow" colspan="1"><div class="topicgroup" data-original-title="" title=""><div class="topic" data-key="NormaleStijgers_2" title="" data-placement="auto" data-original-title="Percentage bedrijven waarvan de omzet in deze periode met meer dan 0,5 en minder dan 20 procent is gestegen ten opzichte van de zelfde periode een jaar eerder.<br /><br />Voor bedrijven met minder dan 50 werkzame personen zijn de gegevens gebaseerd op registerinformatie van de Belastingdienst.<br />Voor bedrijven met 50 of meer werkzame personen zijn de gegevens<br />gebaseerd op integrale waarneming door het CBS.">Normale stijgers</div></div></th><th class="pvtColLabel bottomrow toprow" colspan="1"><div class="topicgroup" data-original-title="" title=""><div class="topic" data-key="SnelleStijgers_3" title="" data-placement="auto" data-original-title="Percentage bedrijven waarvan de omzet in deze periode met meer dan twintig procent is gestegen ten opzichte van de zelfde periode een jaar eerder.<br /><br />Voor bedrijven met minder dan 50 werkzame personen zijn de gegevens gebaseerd op registerinformatie van de Belastingdienst.<br />Voor bedrijven met 50 of meer werkzame personen zijn de gegevens<br />gebaseerd op integrale waarneming door het CBS.">Snelle stijgers</div></div></th><th class="pvtColLabel bottomrow toprow" colspan="1"><div class="topic" data-key="BedrijvenMetOmzetStabiel_4" title="" data-placement="auto" data-original-title="Percentage bedrijven waarvan de omzet in deze periode nagenoeg gelijk is gebleven ten opzichte van de zelfde periode een jaar eerder (met minder dan een half procent is gestegen of gedaald).<br /><br />Voor bedrijven met minder dan 50 werkzame personen zijn de gegevens gebaseerd op registerinformatie van de Belastingdienst.<br />Voor bedrijven met 50 of meer werkzame personen zijn de gegevens<br />gebaseerd op integrale waarneming door het CBS.">Bedrijven met omzet stabiel</div></th><th class="pvtColLabel bottomrow toprow" colspan="1"><div class="topicgroup start" data-original-title="" title=""><div title="" data-placement="auto" data-original-title="Percentage bedrijven waarvan de omzet in deze periode met meer dan een half procent is gedaald ten opzichte van de zelfde periode een jaar eerder.<br /><br />Voor bedrijven met minder dan 50 werkzame personen zijn de gegevens gebaseerd op registerinformatie van de Belastingdienst.<br />Voor bedrijven met 50 of meer werkzame personen zijn de gegevens<br />gebaseerd op integrale waarneming door het CBS.">Bedrijven met omzetdaling</div><div class="topic" data-key="AlleDalers_5" title="" data-placement="auto" data-original-title="Percentage bedrijven waarvan de omzet in deze periode met meer dan een half procent is gedaald ten opzichte van de zelfde periode een jaar eerder.<br /><br />Voor bedrijven met minder dan 50 werkzame personen zijn de gegevens gebaseerd op registerinformatie van de Belastingdienst.<br />Voor bedrijven met 50 of meer werkzame personen zijn de gegevens<br />gebaseerd op integrale waarneming door het CBS.">Alle dalers</div></div></th><th class="pvtColLabel bottomrow toprow" colspan="1"><div class="topicgroup" data-original-title="" title=""><div class="topic" data-key="NormaleDalers_6" title="" data-placement="auto" data-original-title="Percentage bedrijven waarvan de omzet in deze periode met meer dan 0,5 en minder dan 20 procent is gedaald ten opzichte van de zelfde periode een jaar eerder.<br /><br />Voor bedrijven met minder dan 50 werkzame personen zijn de gegevens gebaseerd op registerinformatie van de Belastingdienst.<br />Voor bedrijven met 50 of meer werkzame personen zijn de gegevens<br />gebaseerd op integrale waarneming door het CBS.">Normale dalers</div></div></th><th class="pvtColLabel bottomrow toprow" colspan="1"><div class="topicgroup" data-original-title="" title=""><div class="topic" data-key="SnelleDalers_7" title="" data-placement="auto" data-original-title="Percentage bedrijven waarvan de omzet in deze periode met meer dan twintig procent is gedaald ten opzichte van de zelfde periode een jaar eerder.<br /><br />Voor bedrijven met minder dan 50 werkzame personen zijn de gegevens gebaseerd op registerinformatie van de Belastingdienst.<br />Voor bedrijven met 50 of meer werkzame personen zijn de gegevens<br />gebaseerd op integrale waarneming door het CBS.">Snelle dalers</div></div></th></tr><tr><th class="pvtColLabelUnit" colspan="7">%</th></tr></thead><tbody><tr class="first"><th class="pvtRowLabel notopics" rowspan="18"><div title="" data-placement="auto" data-original-title="Het aantal &quot;werkzame personen&quot; bestaat uit:<br />- werknemers en directeuren die op de loonlijst staan;<br />- werknemers die op de loonlijst staan van een andere onderneming of instelling, maar bij de eigen onderneming werkzaam zijn en als zodanig in feite tot het personeel behoren (ingeleend personeel);<br />- werkzame eigenaren, firmanten, leden van maatschappen, vennoten en medewerkende gezinsleden;<br />- uitzendkrachten. <br /> <br />Uitgeleend personeel ( Werknemers die...<br /><br /><i>Klik i knop voor volledige info</i>">Totaal 1 of meer werkzame personen</div></th><th class="pvtRowLabel notopics" rowspan="9"><div title="" data-placement="auto" data-original-title="Goederenvervoer over de weg">494 Goederenvervoer over de weg</div></th><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2020 4e kwartaal</div></th><td class="pvtVal row0 col0" data-value="53">53</td><td class="pvtVal row0 col1" data-value="26">26</td><td class="pvtVal row0 col2" data-value="27">27</td><td class="pvtVal row0 col3" data-value="2">2</td><td class="pvtVal row0 col4" data-value="45">45</td><td class="pvtVal row0 col5" data-value="24">24</td><td class="pvtVal row0 col6 last" data-value="20">20</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 1e kwartaal</div></th><td class="pvtVal row1 col0" data-value="52">52</td><td class="pvtVal row1 col1" data-value="23">23</td><td class="pvtVal row1 col2" data-value="29">29</td><td class="pvtVal row1 col3" data-value="2">2</td><td class="pvtVal row1 col4" data-value="46">46</td><td class="pvtVal row1 col5" data-value="25">25</td><td class="pvtVal row1 col6 last" data-value="21">21</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 2e kwartaal</div></th><td class="pvtVal row2 col0" data-value="69">69</td><td class="pvtVal row2 col1" data-value="27">27</td><td class="pvtVal row2 col2" data-value="42">42</td><td class="pvtVal row2 col3" data-value="1">1</td><td class="pvtVal row2 col4" data-value="30">30</td><td class="pvtVal row2 col5" data-value="16">16</td><td class="pvtVal row2 col6 last" data-value="14">14</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 3e kwartaal</div></th><td class="pvtVal row3 col0" data-value="62">62</td><td class="pvtVal row3 col1" data-value="30">30</td><td class="pvtVal row3 col2" data-value="32">32</td><td class="pvtVal row3 col3" data-value="2">2</td><td class="pvtVal row3 col4" data-value="36">36</td><td class="pvtVal row3 col5" data-value="20">20</td><td class="pvtVal row3 col6 last" data-value="15">15</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2021 4e kwartaal**</div></th><td class="pvtVal row4 col0" data-value="66">66</td><td class="pvtVal row4 col1" data-value="31">31</td><td class="pvtVal row4 col2" data-value="35">35</td><td class="pvtVal row4 col3" data-value="2">2</td><td class="pvtVal row4 col4" data-value="32">32</td><td class="pvtVal row4 col5" data-value="18">18</td><td class="pvtVal row4 col6 last" data-value="14">14</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 1e kwartaal**</div></th><td class="pvtVal row5 col0" data-value="64">64</td><td class="pvtVal row5 col1" data-value="25">25</td><td class="pvtVal row5 col2" data-value="39">39</td><td class="pvtVal row5 col3" data-value="1">1</td><td class="pvtVal row5 col4" data-value="35">35</td><td class="pvtVal row5 col5" data-value="17">17</td><td class="pvtVal row5 col6 last" data-value="18">18</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 2e kwartaal**</div></th><td class="pvtVal row6 col0" data-value="68">68</td><td class="pvtVal row6 col1" data-value="31">31</td><td class="pvtVal row6 col2" data-value="37">37</td><td class="pvtVal row6 col3" data-value="1">1</td><td class="pvtVal row6 col4" data-value="31">31</td><td class="pvtVal row6 col5" data-value="16">16</td><td class="pvtVal row6 col6 last" data-value="15">15</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 3e kwartaal**</div></th><td class="pvtVal row7 col0" data-value="67">67</td><td class="pvtVal row7 col1" data-value="30">30</td><td class="pvtVal row7 col2" data-value="37">37</td><td class="pvtVal row7 col3" data-value="1">1</td><td class="pvtVal row7 col4" data-value="31">31</td><td class="pvtVal row7 col5" data-value="16">16</td><td class="pvtVal row7 col6 last" data-value="16">16</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Voorlopige cijfers">2022 4e kwartaal*</div></th><td class="pvtVal row8 col0" data-value="62">62</td><td class="pvtVal row8 col1" data-value="32">32</td><td class="pvtVal row8 col2" data-value="30">30</td><td class="pvtVal row8 col3" data-value="2">2</td><td class="pvtVal row8 col4" data-value="36">36</td><td class="pvtVal row8 col5" data-value="18">18</td><td class="pvtVal row8 col6 last" data-value="18">18</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="9"><div title="" data-placement="auto" data-original-title="Goederenvervoer over de weg (geen verhuizingen)<br />Deze klasse omvat:<br />- ongeregeld goederenvervoer over de weg ongeacht goederensoort en transportmiddel:<br />  w.o. via huifwagens, tankwagens, containers, koelwagens, diepladers enz.;<br />  w.o. vervoer van vee, bulkgoederen, vloeistoffen, stukgoederen enz.;<br />- goederenvervoer over de weg door afhaal- en besteldiensten met een groeperende en distribuerende functie;<br />- bezorgdiensten van producten voor...<br /><br /><i>Klik i knop voor volledige info</i>">4941 Goederenwegvervoer (geen verhuis-)</div></th><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2020 4e kwartaal</div></th><td class="pvtVal row9 col0" data-value="53">53</td><td class="pvtVal row9 col1" data-value="26">26</td><td class="pvtVal row9 col2" data-value="27">27</td><td class="pvtVal row9 col3" data-value="2">2</td><td class="pvtVal row9 col4" data-value="45">45</td><td class="pvtVal row9 col5" data-value="24">24</td><td class="pvtVal row9 col6 last" data-value="20">20</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 1e kwartaal</div></th><td class="pvtVal row10 col0" data-value="51">51</td><td class="pvtVal row10 col1" data-value="23">23</td><td class="pvtVal row10 col2" data-value="28">28</td><td class="pvtVal row10 col3" data-value="2">2</td><td class="pvtVal row10 col4" data-value="47">47</td><td class="pvtVal row10 col5" data-value="25">25</td><td class="pvtVal row10 col6 last" data-value="21">21</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 2e kwartaal</div></th><td class="pvtVal row11 col0" data-value="69">69</td><td class="pvtVal row11 col1" data-value="27">27</td><td class="pvtVal row11 col2" data-value="42">42</td><td class="pvtVal row11 col3" data-value="1">1</td><td class="pvtVal row11 col4" data-value="30">30</td><td class="pvtVal row11 col5" data-value="16">16</td><td class="pvtVal row11 col6 last" data-value="14">14</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 3e kwartaal</div></th><td class="pvtVal row12 col0" data-value="62">62</td><td class="pvtVal row12 col1" data-value="31">31</td><td class="pvtVal row12 col2" data-value="31">31</td><td class="pvtVal row12 col3" data-value="2">2</td><td class="pvtVal row12 col4" data-value="36">36</td><td class="pvtVal row12 col5" data-value="20">20</td><td class="pvtVal row12 col6 last" data-value="15">15</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2021 4e kwartaal**</div></th><td class="pvtVal row13 col0" data-value="66">66</td><td class="pvtVal row13 col1" data-value="32">32</td><td class="pvtVal row13 col2" data-value="35">35</td><td class="pvtVal row13 col3" data-value="2">2</td><td class="pvtVal row13 col4" data-value="32">32</td><td class="pvtVal row13 col5" data-value="18">18</td><td class="pvtVal row13 col6 last" data-value="14">14</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 1e kwartaal**</div></th><td class="pvtVal row14 col0" data-value="64">64</td><td class="pvtVal row14 col1" data-value="25">25</td><td class="pvtVal row14 col2" data-value="39">39</td><td class="pvtVal row14 col3" data-value="1">1</td><td class="pvtVal row14 col4" data-value="35">35</td><td class="pvtVal row14 col5" data-value="17">17</td><td class="pvtVal row14 col6 last" data-value="17">17</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 2e kwartaal**</div></th><td class="pvtVal row15 col0" data-value="68">68</td><td class="pvtVal row15 col1" data-value="32">32</td><td class="pvtVal row15 col2" data-value="36">36</td><td class="pvtVal row15 col3" data-value="1">1</td><td class="pvtVal row15 col4" data-value="30">30</td><td class="pvtVal row15 col5" data-value="16">16</td><td class="pvtVal row15 col6 last" data-value="15">15</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 3e kwartaal**</div></th><td class="pvtVal row16 col0" data-value="67">67</td><td class="pvtVal row16 col1" data-value="31">31</td><td class="pvtVal row16 col2" data-value="37">37</td><td class="pvtVal row16 col3" data-value="1">1</td><td class="pvtVal row16 col4" data-value="31">31</td><td class="pvtVal row16 col5" data-value="15">15</td><td class="pvtVal row16 col6 last" data-value="16">16</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Voorlopige cijfers">2022 4e kwartaal*</div></th><td class="pvtVal row17 col0" data-value="62">62</td><td class="pvtVal row17 col1" data-value="32">32</td><td class="pvtVal row17 col2" data-value="29">29</td><td class="pvtVal row17 col3" data-value="2">2</td><td class="pvtVal row17 col4" data-value="36">36</td><td class="pvtVal row17 col5" data-value="18">18</td><td class="pvtVal row17 col6 last" data-value="18">18</td></tr><tr><th class="pvtRowLabel notopics" rowspan="18"><div title="" data-placement="auto" data-original-title="Het aantal &quot;werkzame personen&quot; bestaat uit:<br />- werknemers en directeuren die op de loonlijst staan;<br />- werknemers die op de loonlijst staan van een andere onderneming of instelling, maar bij de eigen onderneming werkzaam zijn en als zodanig in feite tot het personeel behoren (ingeleend personeel);<br />- werkzame eigenaren, firmanten, leden van maatschappen, vennoten en medewerkende gezinsleden;<br />- uitzendkrachten. <br /> <br />Uitgeleend personeel ( Werknemers die...<br /><br /><i>Klik i knop voor volledige info</i>">1 werkzame persoon</div></th><th class="pvtRowLabel notopics" rowspan="9"><div title="" data-placement="auto" data-original-title="Goederenvervoer over de weg">494 Goederenvervoer over de weg</div></th><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2020 4e kwartaal</div></th><td class="pvtVal row18 col0" data-value="54">54</td><td class="pvtVal row18 col1" data-value="24">24</td><td class="pvtVal row18 col2" data-value="30">30</td><td class="pvtVal row18 col3" data-value="2">2</td><td class="pvtVal row18 col4" data-value="44">44</td><td class="pvtVal row18 col5" data-value="22">22</td><td class="pvtVal row18 col6 last" data-value="22">22</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 1e kwartaal</div></th><td class="pvtVal row19 col0" data-value="52">52</td><td class="pvtVal row19 col1" data-value="21">21</td><td class="pvtVal row19 col2" data-value="31">31</td><td class="pvtVal row19 col3" data-value="2">2</td><td class="pvtVal row19 col4" data-value="47">47</td><td class="pvtVal row19 col5" data-value="24">24</td><td class="pvtVal row19 col6 last" data-value="23">23</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 2e kwartaal</div></th><td class="pvtVal row20 col0" data-value="66">66</td><td class="pvtVal row20 col1" data-value="24">24</td><td class="pvtVal row20 col2" data-value="42">42</td><td class="pvtVal row20 col3" data-value="2">2</td><td class="pvtVal row20 col4" data-value="32">32</td><td class="pvtVal row20 col5" data-value="17">17</td><td class="pvtVal row20 col6 last" data-value="15">15</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 3e kwartaal</div></th><td class="pvtVal row21 col0" data-value="59">59</td><td class="pvtVal row21 col1" data-value="27">27</td><td class="pvtVal row21 col2" data-value="32">32</td><td class="pvtVal row21 col3" data-value="2">2</td><td class="pvtVal row21 col4" data-value="39">39</td><td class="pvtVal row21 col5" data-value="20">20</td><td class="pvtVal row21 col6 last" data-value="19">19</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2021 4e kwartaal**</div></th><td class="pvtVal row22 col0" data-value="63">63</td><td class="pvtVal row22 col1" data-value="28">28</td><td class="pvtVal row22 col2" data-value="35">35</td><td class="pvtVal row22 col3" data-value="2">2</td><td class="pvtVal row22 col4" data-value="35">35</td><td class="pvtVal row22 col5" data-value="17">17</td><td class="pvtVal row22 col6 last" data-value="17">17</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 1e kwartaal**</div></th><td class="pvtVal row23 col0" data-value="61">61</td><td class="pvtVal row23 col1" data-value="22">22</td><td class="pvtVal row23 col2" data-value="39">39</td><td class="pvtVal row23 col3" data-value="1">1</td><td class="pvtVal row23 col4" data-value="37">37</td><td class="pvtVal row23 col5" data-value="17">17</td><td class="pvtVal row23 col6 last" data-value="21">21</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 2e kwartaal**</div></th><td class="pvtVal row24 col0" data-value="65">65</td><td class="pvtVal row24 col1" data-value="28">28</td><td class="pvtVal row24 col2" data-value="37">37</td><td class="pvtVal row24 col3" data-value="1">1</td><td class="pvtVal row24 col4" data-value="33">33</td><td class="pvtVal row24 col5" data-value="15">15</td><td class="pvtVal row24 col6 last" data-value="18">18</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 3e kwartaal**</div></th><td class="pvtVal row25 col0" data-value="65">65</td><td class="pvtVal row25 col1" data-value="29">29</td><td class="pvtVal row25 col2" data-value="36">36</td><td class="pvtVal row25 col3" data-value="1">1</td><td class="pvtVal row25 col4" data-value="34">34</td><td class="pvtVal row25 col5" data-value="15">15</td><td class="pvtVal row25 col6 last" data-value="19">19</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Voorlopige cijfers">2022 4e kwartaal*</div></th><td class="pvtVal row26 col0" data-value="61">61</td><td class="pvtVal row26 col1" data-value="29">29</td><td class="pvtVal row26 col2" data-value="32">32</td><td class="pvtVal row26 col3" data-value="2">2</td><td class="pvtVal row26 col4" data-value="38">38</td><td class="pvtVal row26 col5" data-value="17">17</td><td class="pvtVal row26 col6 last" data-value="21">21</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="9"><div title="" data-placement="auto" data-original-title="Goederenvervoer over de weg (geen verhuizingen)<br />Deze klasse omvat:<br />- ongeregeld goederenvervoer over de weg ongeacht goederensoort en transportmiddel:<br />  w.o. via huifwagens, tankwagens, containers, koelwagens, diepladers enz.;<br />  w.o. vervoer van vee, bulkgoederen, vloeistoffen, stukgoederen enz.;<br />- goederenvervoer over de weg door afhaal- en besteldiensten met een groeperende en distribuerende functie;<br />- bezorgdiensten van producten voor...<br /><br /><i>Klik i knop voor volledige info</i>">4941 Goederenwegvervoer (geen verhuis-)</div></th><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2020 4e kwartaal</div></th><td class="pvtVal row27 col0" data-value="54">54</td><td class="pvtVal row27 col1" data-value="24">24</td><td class="pvtVal row27 col2" data-value="30">30</td><td class="pvtVal row27 col3" data-value="2">2</td><td class="pvtVal row27 col4" data-value="43">43</td><td class="pvtVal row27 col5" data-value="22">22</td><td class="pvtVal row27 col6 last" data-value="21">21</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 1e kwartaal</div></th><td class="pvtVal row28 col0" data-value="51">51</td><td class="pvtVal row28 col1" data-value="21">21</td><td class="pvtVal row28 col2" data-value="30">30</td><td class="pvtVal row28 col3" data-value="2">2</td><td class="pvtVal row28 col4" data-value="47">47</td><td class="pvtVal row28 col5" data-value="24">24</td><td class="pvtVal row28 col6 last" data-value="22">22</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 2e kwartaal</div></th><td class="pvtVal row29 col0" data-value="66">66</td><td class="pvtVal row29 col1" data-value="24">24</td><td class="pvtVal row29 col2" data-value="42">42</td><td class="pvtVal row29 col3" data-value="2">2</td><td class="pvtVal row29 col4" data-value="32">32</td><td class="pvtVal row29 col5" data-value="17">17</td><td class="pvtVal row29 col6 last" data-value="15">15</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 3e kwartaal</div></th><td class="pvtVal row30 col0" data-value="59">59</td><td class="pvtVal row30 col1" data-value="28">28</td><td class="pvtVal row30 col2" data-value="31">31</td><td class="pvtVal row30 col3" data-value="2">2</td><td class="pvtVal row30 col4" data-value="39">39</td><td class="pvtVal row30 col5" data-value="20">20</td><td class="pvtVal row30 col6 last" data-value="19">19</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2021 4e kwartaal**</div></th><td class="pvtVal row31 col0" data-value="63">63</td><td class="pvtVal row31 col1" data-value="28">28</td><td class="pvtVal row31 col2" data-value="35">35</td><td class="pvtVal row31 col3" data-value="2">2</td><td class="pvtVal row31 col4" data-value="35">35</td><td class="pvtVal row31 col5" data-value="18">18</td><td class="pvtVal row31 col6 last" data-value="17">17</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 1e kwartaal**</div></th><td class="pvtVal row32 col0" data-value="61">61</td><td class="pvtVal row32 col1" data-value="23">23</td><td class="pvtVal row32 col2" data-value="39">39</td><td class="pvtVal row32 col3" data-value="2">2</td><td class="pvtVal row32 col4" data-value="37">37</td><td class="pvtVal row32 col5" data-value="17">17</td><td class="pvtVal row32 col6 last" data-value="20">20</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 2e kwartaal**</div></th><td class="pvtVal row33 col0" data-value="66">66</td><td class="pvtVal row33 col1" data-value="29">29</td><td class="pvtVal row33 col2" data-value="36">36</td><td class="pvtVal row33 col3" data-value="1">1</td><td class="pvtVal row33 col4" data-value="33">33</td><td class="pvtVal row33 col5" data-value="15">15</td><td class="pvtVal row33 col6 last" data-value="18">18</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 3e kwartaal**</div></th><td class="pvtVal row34 col0" data-value="65">65</td><td class="pvtVal row34 col1" data-value="29">29</td><td class="pvtVal row34 col2" data-value="36">36</td><td class="pvtVal row34 col3" data-value="1">1</td><td class="pvtVal row34 col4" data-value="34">34</td><td class="pvtVal row34 col5" data-value="15">15</td><td class="pvtVal row34 col6 last" data-value="19">19</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Voorlopige cijfers">2022 4e kwartaal*</div></th><td class="pvtVal row35 col0" data-value="61">61</td><td class="pvtVal row35 col1" data-value="29">29</td><td class="pvtVal row35 col2" data-value="31">31</td><td class="pvtVal row35 col3" data-value="2">2</td><td class="pvtVal row35 col4" data-value="38">38</td><td class="pvtVal row35 col5" data-value="17">17</td><td class="pvtVal row35 col6 last" data-value="21">21</td></tr><tr><th class="pvtRowLabel notopics" rowspan="18"><div title="" data-placement="auto" data-original-title="Het aantal &quot;werkzame personen&quot; bestaat uit:<br />- werknemers en directeuren die op de loonlijst staan;<br />- werknemers die op de loonlijst staan van een andere onderneming of instelling, maar bij de eigen onderneming werkzaam zijn en als zodanig in feite tot het personeel behoren (ingeleend personeel);<br />- werkzame eigenaren, firmanten, leden van maatschappen, vennoten en medewerkende gezinsleden;<br />- uitzendkrachten. <br /> <br />Uitgeleend personeel ( Werknemers die...<br /><br /><i>Klik i knop voor volledige info</i>">2 tot 10 werkzame personen</div></th><th class="pvtRowLabel notopics" rowspan="9"><div title="" data-placement="auto" data-original-title="Goederenvervoer over de weg">494 Goederenvervoer over de weg</div></th><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2020 4e kwartaal</div></th><td class="pvtVal row36 col0" data-value="53">53</td><td class="pvtVal row36 col1" data-value="27">27</td><td class="pvtVal row36 col2" data-value="26">26</td><td class="pvtVal row36 col3" data-value="2">2</td><td class="pvtVal row36 col4" data-value="46">46</td><td class="pvtVal row36 col5" data-value="24">24</td><td class="pvtVal row36 col6 last" data-value="22">22</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 1e kwartaal</div></th><td class="pvtVal row37 col0" data-value="51">51</td><td class="pvtVal row37 col1" data-value="23">23</td><td class="pvtVal row37 col2" data-value="28">28</td><td class="pvtVal row37 col3" data-value="2">2</td><td class="pvtVal row37 col4" data-value="47">47</td><td class="pvtVal row37 col5" data-value="25">25</td><td class="pvtVal row37 col6 last" data-value="22">22</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 2e kwartaal</div></th><td class="pvtVal row38 col0" data-value="68">68</td><td class="pvtVal row38 col1" data-value="27">27</td><td class="pvtVal row38 col2" data-value="41">41</td><td class="pvtVal row38 col3" data-value="1">1</td><td class="pvtVal row38 col4" data-value="30">30</td><td class="pvtVal row38 col5" data-value="17">17</td><td class="pvtVal row38 col6 last" data-value="14">14</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 3e kwartaal</div></th><td class="pvtVal row39 col0" data-value="62">62</td><td class="pvtVal row39 col1" data-value="28">28</td><td class="pvtVal row39 col2" data-value="34">34</td><td class="pvtVal row39 col3" data-value="2">2</td><td class="pvtVal row39 col4" data-value="36">36</td><td class="pvtVal row39 col5" data-value="21">21</td><td class="pvtVal row39 col6 last" data-value="15">15</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2021 4e kwartaal**</div></th><td class="pvtVal row40 col0" data-value="67">67</td><td class="pvtVal row40 col1" data-value="31">31</td><td class="pvtVal row40 col2" data-value="36">36</td><td class="pvtVal row40 col3" data-value="1">1</td><td class="pvtVal row40 col4" data-value="32">32</td><td class="pvtVal row40 col5" data-value="19">19</td><td class="pvtVal row40 col6 last" data-value="13">13</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 1e kwartaal**</div></th><td class="pvtVal row41 col0" data-value="64">64</td><td class="pvtVal row41 col1" data-value="24">24</td><td class="pvtVal row41 col2" data-value="40">40</td><td class="pvtVal row41 col3" data-value="1">1</td><td class="pvtVal row41 col4" data-value="35">35</td><td class="pvtVal row41 col5" data-value="19">19</td><td class="pvtVal row41 col6 last" data-value="16">16</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 2e kwartaal**</div></th><td class="pvtVal row42 col0" data-value="67">67</td><td class="pvtVal row42 col1" data-value="30">30</td><td class="pvtVal row42 col2" data-value="37">37</td><td class="pvtVal row42 col3" data-value="1">1</td><td class="pvtVal row42 col4" data-value="32">32</td><td class="pvtVal row42 col5" data-value="17">17</td><td class="pvtVal row42 col6 last" data-value="15">15</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 3e kwartaal**</div></th><td class="pvtVal row43 col0" data-value="66">66</td><td class="pvtVal row43 col1" data-value="27">27</td><td class="pvtVal row43 col2" data-value="39">39</td><td class="pvtVal row43 col3" data-value="1">1</td><td class="pvtVal row43 col4" data-value="33">33</td><td class="pvtVal row43 col5" data-value="17">17</td><td class="pvtVal row43 col6 last" data-value="15">15</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Voorlopige cijfers">2022 4e kwartaal*</div></th><td class="pvtVal row44 col0" data-value="60">60</td><td class="pvtVal row44 col1" data-value="30">30</td><td class="pvtVal row44 col2" data-value="29">29</td><td class="pvtVal row44 col3" data-value="2">2</td><td class="pvtVal row44 col4" data-value="38">38</td><td class="pvtVal row44 col5" data-value="21">21</td><td class="pvtVal row44 col6 last" data-value="17">17</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="9"><div title="" data-placement="auto" data-original-title="Goederenvervoer over de weg (geen verhuizingen)<br />Deze klasse omvat:<br />- ongeregeld goederenvervoer over de weg ongeacht goederensoort en transportmiddel:<br />  w.o. via huifwagens, tankwagens, containers, koelwagens, diepladers enz.;<br />  w.o. vervoer van vee, bulkgoederen, vloeistoffen, stukgoederen enz.;<br />- goederenvervoer over de weg door afhaal- en besteldiensten met een groeperende en distribuerende functie;<br />- bezorgdiensten van producten voor...<br /><br /><i>Klik i knop voor volledige info</i>">4941 Goederenwegvervoer (geen verhuis-)</div></th><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2020 4e kwartaal</div></th><td class="pvtVal row45 col0" data-value="52">52</td><td class="pvtVal row45 col1" data-value="27">27</td><td class="pvtVal row45 col2" data-value="25">25</td><td class="pvtVal row45 col3" data-value="2">2</td><td class="pvtVal row45 col4" data-value="46">46</td><td class="pvtVal row45 col5" data-value="24">24</td><td class="pvtVal row45 col6 last" data-value="22">22</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 1e kwartaal</div></th><td class="pvtVal row46 col0" data-value="50">50</td><td class="pvtVal row46 col1" data-value="22">22</td><td class="pvtVal row46 col2" data-value="27">27</td><td class="pvtVal row46 col3" data-value="2">2</td><td class="pvtVal row46 col4" data-value="48">48</td><td class="pvtVal row46 col5" data-value="26">26</td><td class="pvtVal row46 col6 last" data-value="23">23</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 2e kwartaal</div></th><td class="pvtVal row47 col0" data-value="68">68</td><td class="pvtVal row47 col1" data-value="27">27</td><td class="pvtVal row47 col2" data-value="41">41</td><td class="pvtVal row47 col3" data-value="1">1</td><td class="pvtVal row47 col4" data-value="31">31</td><td class="pvtVal row47 col5" data-value="17">17</td><td class="pvtVal row47 col6 last" data-value="14">14</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 3e kwartaal</div></th><td class="pvtVal row48 col0" data-value="62">62</td><td class="pvtVal row48 col1" data-value="28">28</td><td class="pvtVal row48 col2" data-value="34">34</td><td class="pvtVal row48 col3" data-value="2">2</td><td class="pvtVal row48 col4" data-value="36">36</td><td class="pvtVal row48 col5" data-value="22">22</td><td class="pvtVal row48 col6 last" data-value="15">15</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2021 4e kwartaal**</div></th><td class="pvtVal row49 col0" data-value="67">67</td><td class="pvtVal row49 col1" data-value="31">31</td><td class="pvtVal row49 col2" data-value="36">36</td><td class="pvtVal row49 col3" data-value="1">1</td><td class="pvtVal row49 col4" data-value="32">32</td><td class="pvtVal row49 col5" data-value="19">19</td><td class="pvtVal row49 col6 last" data-value="13">13</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 1e kwartaal**</div></th><td class="pvtVal row50 col0" data-value="65">65</td><td class="pvtVal row50 col1" data-value="25">25</td><td class="pvtVal row50 col2" data-value="40">40</td><td class="pvtVal row50 col3" data-value="1">1</td><td class="pvtVal row50 col4" data-value="34">34</td><td class="pvtVal row50 col5" data-value="19">19</td><td class="pvtVal row50 col6 last" data-value="16">16</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 2e kwartaal**</div></th><td class="pvtVal row51 col0" data-value="67">67</td><td class="pvtVal row51 col1" data-value="30">30</td><td class="pvtVal row51 col2" data-value="36">36</td><td class="pvtVal row51 col3" data-value="2">2</td><td class="pvtVal row51 col4" data-value="32">32</td><td class="pvtVal row51 col5" data-value="17">17</td><td class="pvtVal row51 col6 last" data-value="15">15</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 3e kwartaal**</div></th><td class="pvtVal row52 col0" data-value="66">66</td><td class="pvtVal row52 col1" data-value="27">27</td><td class="pvtVal row52 col2" data-value="39">39</td><td class="pvtVal row52 col3" data-value="1">1</td><td class="pvtVal row52 col4" data-value="32">32</td><td class="pvtVal row52 col5" data-value="17">17</td><td class="pvtVal row52 col6 last" data-value="15">15</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Voorlopige cijfers">2022 4e kwartaal*</div></th><td class="pvtVal row53 col0" data-value="60">60</td><td class="pvtVal row53 col1" data-value="31">31</td><td class="pvtVal row53 col2" data-value="29">29</td><td class="pvtVal row53 col3" data-value="2">2</td><td class="pvtVal row53 col4" data-value="38">38</td><td class="pvtVal row53 col5" data-value="21">21</td><td class="pvtVal row53 col6 last" data-value="17">17</td></tr><tr><th class="pvtRowLabel notopics" rowspan="18"><div title="" data-placement="auto" data-original-title="Het aantal &quot;werkzame personen&quot; bestaat uit:<br />- werknemers en directeuren die op de loonlijst staan;<br />- werknemers die op de loonlijst staan van een andere onderneming of instelling, maar bij de eigen onderneming werkzaam zijn en als zodanig in feite tot het personeel behoren (ingeleend personeel);<br />- werkzame eigenaren, firmanten, leden van maatschappen, vennoten en medewerkende gezinsleden;<br />- uitzendkrachten. <br /> <br />Uitgeleend personeel ( Werknemers die...<br /><br /><i>Klik i knop voor volledige info</i>">10 tot 50 werkzame personen</div></th><th class="pvtRowLabel notopics" rowspan="9"><div title="" data-placement="auto" data-original-title="Goederenvervoer over de weg">494 Goederenvervoer over de weg</div></th><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2020 4e kwartaal</div></th><td class="pvtVal row54 col0" data-value="52">52</td><td class="pvtVal row54 col1" data-value="35">35</td><td class="pvtVal row54 col2" data-value="17">17</td><td class="pvtVal row54 col3" data-value="2">2</td><td class="pvtVal row54 col4" data-value="46">46</td><td class="pvtVal row54 col5" data-value="34">34</td><td class="pvtVal row54 col6 last" data-value="12">12</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 1e kwartaal</div></th><td class="pvtVal row55 col0" data-value="56">56</td><td class="pvtVal row55 col1" data-value="36">36</td><td class="pvtVal row55 col2" data-value="20">20</td><td class="pvtVal row55 col3" data-value="3">3</td><td class="pvtVal row55 col4" data-value="41">41</td><td class="pvtVal row55 col5" data-value="28">28</td><td class="pvtVal row55 col6 last" data-value="13">13</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 2e kwartaal</div></th><td class="pvtVal row56 col0" data-value="81">81</td><td class="pvtVal row56 col1" data-value="37">37</td><td class="pvtVal row56 col2" data-value="43">43</td><td class="pvtVal row56 col3" data-value="1">1</td><td class="pvtVal row56 col4" data-value="18">18</td><td class="pvtVal row56 col5" data-value="13">13</td><td class="pvtVal row56 col6 last" data-value="5">5</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 3e kwartaal</div></th><td class="pvtVal row57 col0" data-value="72">72</td><td class="pvtVal row57 col1" data-value="43">43</td><td class="pvtVal row57 col2" data-value="29">29</td><td class="pvtVal row57 col3" data-value="1">1</td><td class="pvtVal row57 col4" data-value="26">26</td><td class="pvtVal row57 col5" data-value="19">19</td><td class="pvtVal row57 col6 last" data-value="7">7</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2021 4e kwartaal**</div></th><td class="pvtVal row58 col0" data-value="74">74</td><td class="pvtVal row58 col1" data-value="42">42</td><td class="pvtVal row58 col2" data-value="32">32</td><td class="pvtVal row58 col3" data-value="2">2</td><td class="pvtVal row58 col4" data-value="24">24</td><td class="pvtVal row58 col5" data-value="16">16</td><td class="pvtVal row58 col6 last" data-value="8">8</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 1e kwartaal**</div></th><td class="pvtVal row59 col0" data-value="74">74</td><td class="pvtVal row59 col1" data-value="38">38</td><td class="pvtVal row59 col2" data-value="36">36</td><td class="pvtVal row59 col3" data-value="2">2</td><td class="pvtVal row59 col4" data-value="24">24</td><td class="pvtVal row59 col5" data-value="17">17</td><td class="pvtVal row59 col6 last" data-value="8">8</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 2e kwartaal**</div></th><td class="pvtVal row60 col0" data-value="78">78</td><td class="pvtVal row60 col1" data-value="43">43</td><td class="pvtVal row60 col2" data-value="35">35</td><td class="pvtVal row60 col3" data-value="1">1</td><td class="pvtVal row60 col4" data-value="20">20</td><td class="pvtVal row60 col5" data-value="15">15</td><td class="pvtVal row60 col6 last" data-value="5">5</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 3e kwartaal**</div></th><td class="pvtVal row61 col0" data-value="76">76</td><td class="pvtVal row61 col1" data-value="41">41</td><td class="pvtVal row61 col2" data-value="35">35</td><td class="pvtVal row61 col3" data-value="2">2</td><td class="pvtVal row61 col4" data-value="22">22</td><td class="pvtVal row61 col5" data-value="16">16</td><td class="pvtVal row61 col6 last" data-value="6">6</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Voorlopige cijfers">2022 4e kwartaal*</div></th><td class="pvtVal row62 col0" data-value="68">68</td><td class="pvtVal row62 col1" data-value="45">45</td><td class="pvtVal row62 col2" data-value="23">23</td><td class="pvtVal row62 col3" data-value="2">2</td><td class="pvtVal row62 col4" data-value="30">30</td><td class="pvtVal row62 col5" data-value="21">21</td><td class="pvtVal row62 col6 last" data-value="9">9</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="9"><div title="" data-placement="auto" data-original-title="Goederenvervoer over de weg (geen verhuizingen)<br />Deze klasse omvat:<br />- ongeregeld goederenvervoer over de weg ongeacht goederensoort en transportmiddel:<br />  w.o. via huifwagens, tankwagens, containers, koelwagens, diepladers enz.;<br />  w.o. vervoer van vee, bulkgoederen, vloeistoffen, stukgoederen enz.;<br />- goederenvervoer over de weg door afhaal- en besteldiensten met een groeperende en distribuerende functie;<br />- bezorgdiensten van producten voor...<br /><br /><i>Klik i knop voor volledige info</i>">4941 Goederenwegvervoer (geen verhuis-)</div></th><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2020 4e kwartaal</div></th><td class="pvtVal row63 col0" data-value="52">52</td><td class="pvtVal row63 col1" data-value="35">35</td><td class="pvtVal row63 col2" data-value="17">17</td><td class="pvtVal row63 col3" data-value="2">2</td><td class="pvtVal row63 col4" data-value="46">46</td><td class="pvtVal row63 col5" data-value="34">34</td><td class="pvtVal row63 col6 last" data-value="12">12</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 1e kwartaal</div></th><td class="pvtVal row64 col0" data-value="57">57</td><td class="pvtVal row64 col1" data-value="37">37</td><td class="pvtVal row64 col2" data-value="20">20</td><td class="pvtVal row64 col3" data-value="3">3</td><td class="pvtVal row64 col4" data-value="41">41</td><td class="pvtVal row64 col5" data-value="28">28</td><td class="pvtVal row64 col6 last" data-value="13">13</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 2e kwartaal</div></th><td class="pvtVal row65 col0" data-value="81">81</td><td class="pvtVal row65 col1" data-value="38">38</td><td class="pvtVal row65 col2" data-value="43">43</td><td class="pvtVal row65 col3" data-value="1">1</td><td class="pvtVal row65 col4" data-value="18">18</td><td class="pvtVal row65 col5" data-value="13">13</td><td class="pvtVal row65 col6 last" data-value="5">5</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 3e kwartaal</div></th><td class="pvtVal row66 col0" data-value="73">73</td><td class="pvtVal row66 col1" data-value="44">44</td><td class="pvtVal row66 col2" data-value="29">29</td><td class="pvtVal row66 col3" data-value="1">1</td><td class="pvtVal row66 col4" data-value="26">26</td><td class="pvtVal row66 col5" data-value="18">18</td><td class="pvtVal row66 col6 last" data-value="7">7</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2021 4e kwartaal**</div></th><td class="pvtVal row67 col0" data-value="75">75</td><td class="pvtVal row67 col1" data-value="43">43</td><td class="pvtVal row67 col2" data-value="32">32</td><td class="pvtVal row67 col3" data-value="2">2</td><td class="pvtVal row67 col4" data-value="23">23</td><td class="pvtVal row67 col5" data-value="15">15</td><td class="pvtVal row67 col6 last" data-value="7">7</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 1e kwartaal**</div></th><td class="pvtVal row68 col0" data-value="74">74</td><td class="pvtVal row68 col1" data-value="38">38</td><td class="pvtVal row68 col2" data-value="36">36</td><td class="pvtVal row68 col3" data-value="2">2</td><td class="pvtVal row68 col4" data-value="24">24</td><td class="pvtVal row68 col5" data-value="16">16</td><td class="pvtVal row68 col6 last" data-value="8">8</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 2e kwartaal**</div></th><td class="pvtVal row69 col0" data-value="78">78</td><td class="pvtVal row69 col1" data-value="44">44</td><td class="pvtVal row69 col2" data-value="34">34</td><td class="pvtVal row69 col3" data-value="1">1</td><td class="pvtVal row69 col4" data-value="21">21</td><td class="pvtVal row69 col5" data-value="16">16</td><td class="pvtVal row69 col6 last" data-value="5">5</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 3e kwartaal**</div></th><td class="pvtVal row70 col0" data-value="77">77</td><td class="pvtVal row70 col1" data-value="41">41</td><td class="pvtVal row70 col2" data-value="36">36</td><td class="pvtVal row70 col3" data-value="2">2</td><td class="pvtVal row70 col4" data-value="21">21</td><td class="pvtVal row70 col5" data-value="15">15</td><td class="pvtVal row70 col6 last" data-value="6">6</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Voorlopige cijfers">2022 4e kwartaal*</div></th><td class="pvtVal row71 col0" data-value="68">68</td><td class="pvtVal row71 col1" data-value="45">45</td><td class="pvtVal row71 col2" data-value="23">23</td><td class="pvtVal row71 col3" data-value="2">2</td><td class="pvtVal row71 col4" data-value="30">30</td><td class="pvtVal row71 col5" data-value="21">21</td><td class="pvtVal row71 col6 last" data-value="9">9</td></tr><tr><th class="pvtRowLabel notopics" rowspan="18"><div title="" data-placement="auto" data-original-title="Het aantal &quot;werkzame personen&quot; bestaat uit:<br />- werknemers en directeuren die op de loonlijst staan;<br />- werknemers die op de loonlijst staan van een andere onderneming of instelling, maar bij de eigen onderneming werkzaam zijn en als zodanig in feite tot het personeel behoren (ingeleend personeel);<br />- werkzame eigenaren, firmanten, leden van maatschappen, vennoten en medewerkende gezinsleden;<br />- uitzendkrachten. <br /> <br />Uitgeleend personeel ( Werknemers die...<br /><br /><i>Klik i knop voor volledige info</i>">50 tot 100 werkzame personen</div></th><th class="pvtRowLabel notopics" rowspan="9"><div title="" data-placement="auto" data-original-title="Goederenvervoer over de weg">494 Goederenvervoer over de weg</div></th><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2020 4e kwartaal</div></th><td class="pvtVal row72 col0" data-value="       .">       .</td><td class="pvtVal row72 col1" data-value="       .">       .</td><td class="pvtVal row72 col2" data-value="       .">       .</td><td class="pvtVal row72 col3" data-value="       .">       .</td><td class="pvtVal row72 col4" data-value="       .">       .</td><td class="pvtVal row72 col5" data-value="       .">       .</td><td class="pvtVal row72 col6 last" data-value="       .">       .</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 1e kwartaal</div></th><td class="pvtVal row73 col0" data-value="       .">       .</td><td class="pvtVal row73 col1" data-value="       .">       .</td><td class="pvtVal row73 col2" data-value="       .">       .</td><td class="pvtVal row73 col3" data-value="       .">       .</td><td class="pvtVal row73 col4" data-value="       .">       .</td><td class="pvtVal row73 col5" data-value="       .">       .</td><td class="pvtVal row73 col6 last" data-value="       .">       .</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 2e kwartaal</div></th><td class="pvtVal row74 col0" data-value="       .">       .</td><td class="pvtVal row74 col1" data-value="       .">       .</td><td class="pvtVal row74 col2" data-value="       .">       .</td><td class="pvtVal row74 col3" data-value="       .">       .</td><td class="pvtVal row74 col4" data-value="       .">       .</td><td class="pvtVal row74 col5" data-value="       .">       .</td><td class="pvtVal row74 col6 last" data-value="       .">       .</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 3e kwartaal</div></th><td class="pvtVal row75 col0" data-value="76">76</td><td class="pvtVal row75 col1" data-value="55">55</td><td class="pvtVal row75 col2" data-value="21">21</td><td class="pvtVal row75 col3" data-value="1">1</td><td class="pvtVal row75 col4" data-value="23">23</td><td class="pvtVal row75 col5" data-value="18">18</td><td class="pvtVal row75 col6 last" data-value="5">5</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2021 4e kwartaal**</div></th><td class="pvtVal row76 col0" data-value="75">75</td><td class="pvtVal row76 col1" data-value="54">54</td><td class="pvtVal row76 col2" data-value="21">21</td><td class="pvtVal row76 col3" data-value="1">1</td><td class="pvtVal row76 col4" data-value="24">24</td><td class="pvtVal row76 col5" data-value="18">18</td><td class="pvtVal row76 col6 last" data-value="6">6</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 1e kwartaal**</div></th><td class="pvtVal row77 col0" data-value="85">85</td><td class="pvtVal row77 col1" data-value="57">57</td><td class="pvtVal row77 col2" data-value="28">28</td><td class="pvtVal row77 col3" data-value="1">1</td><td class="pvtVal row77 col4" data-value="14">14</td><td class="pvtVal row77 col5" data-value="13">13</td><td class="pvtVal row77 col6 last" data-value="1">1</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 2e kwartaal**</div></th><td class="pvtVal row78 col0" data-value="85">85</td><td class="pvtVal row78 col1" data-value="47">47</td><td class="pvtVal row78 col2" data-value="38">38</td><td class="pvtVal row78 col3" data-value="1">1</td><td class="pvtVal row78 col4" data-value="14">14</td><td class="pvtVal row78 col5" data-value="10">10</td><td class="pvtVal row78 col6 last" data-value="4">4</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 3e kwartaal**</div></th><td class="pvtVal row79 col0" data-value="80">80</td><td class="pvtVal row79 col1" data-value="54">54</td><td class="pvtVal row79 col2" data-value="26">26</td><td class="pvtVal row79 col3" data-value="2">2</td><td class="pvtVal row79 col4" data-value="18">18</td><td class="pvtVal row79 col5" data-value="13">13</td><td class="pvtVal row79 col6 last" data-value="5">5</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Voorlopige cijfers">2022 4e kwartaal*</div></th><td class="pvtVal row80 col0" data-value="72">72</td><td class="pvtVal row80 col1" data-value="52">52</td><td class="pvtVal row80 col2" data-value="20">20</td><td class="pvtVal row80 col3" data-value="3">3</td><td class="pvtVal row80 col4" data-value="25">25</td><td class="pvtVal row80 col5" data-value="17">17</td><td class="pvtVal row80 col6 last" data-value="8">8</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="9"><div title="" data-placement="auto" data-original-title="Goederenvervoer over de weg (geen verhuizingen)<br />Deze klasse omvat:<br />- ongeregeld goederenvervoer over de weg ongeacht goederensoort en transportmiddel:<br />  w.o. via huifwagens, tankwagens, containers, koelwagens, diepladers enz.;<br />  w.o. vervoer van vee, bulkgoederen, vloeistoffen, stukgoederen enz.;<br />- goederenvervoer over de weg door afhaal- en besteldiensten met een groeperende en distribuerende functie;<br />- bezorgdiensten van producten voor...<br /><br /><i>Klik i knop voor volledige info</i>">4941 Goederenwegvervoer (geen verhuis-)</div></th><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2020 4e kwartaal</div></th><td class="pvtVal row81 col0" data-value="       .">       .</td><td class="pvtVal row81 col1" data-value="       .">       .</td><td class="pvtVal row81 col2" data-value="       .">       .</td><td class="pvtVal row81 col3" data-value="       .">       .</td><td class="pvtVal row81 col4" data-value="       .">       .</td><td class="pvtVal row81 col5" data-value="       .">       .</td><td class="pvtVal row81 col6 last" data-value="       .">       .</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 1e kwartaal</div></th><td class="pvtVal row82 col0" data-value="       .">       .</td><td class="pvtVal row82 col1" data-value="       .">       .</td><td class="pvtVal row82 col2" data-value="       .">       .</td><td class="pvtVal row82 col3" data-value="       .">       .</td><td class="pvtVal row82 col4" data-value="       .">       .</td><td class="pvtVal row82 col5" data-value="       .">       .</td><td class="pvtVal row82 col6 last" data-value="       .">       .</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 2e kwartaal</div></th><td class="pvtVal row83 col0" data-value="       .">       .</td><td class="pvtVal row83 col1" data-value="       .">       .</td><td class="pvtVal row83 col2" data-value="       .">       .</td><td class="pvtVal row83 col3" data-value="       .">       .</td><td class="pvtVal row83 col4" data-value="       .">       .</td><td class="pvtVal row83 col5" data-value="       .">       .</td><td class="pvtVal row83 col6 last" data-value="       .">       .</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 3e kwartaal</div></th><td class="pvtVal row84 col0" data-value="76">76</td><td class="pvtVal row84 col1" data-value="56">56</td><td class="pvtVal row84 col2" data-value="20">20</td><td class="pvtVal row84 col3" data-value="1">1</td><td class="pvtVal row84 col4" data-value="23">23</td><td class="pvtVal row84 col5" data-value="18">18</td><td class="pvtVal row84 col6 last" data-value="5">5</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2021 4e kwartaal**</div></th><td class="pvtVal row85 col0" data-value="76">76</td><td class="pvtVal row85 col1" data-value="54">54</td><td class="pvtVal row85 col2" data-value="21">21</td><td class="pvtVal row85 col3" data-value="1">1</td><td class="pvtVal row85 col4" data-value="23">23</td><td class="pvtVal row85 col5" data-value="17">17</td><td class="pvtVal row85 col6 last" data-value="6">6</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 1e kwartaal**</div></th><td class="pvtVal row86 col0" data-value="86">86</td><td class="pvtVal row86 col1" data-value="58">58</td><td class="pvtVal row86 col2" data-value="28">28</td><td class="pvtVal row86 col3" data-value="0">0</td><td class="pvtVal row86 col4" data-value="14">14</td><td class="pvtVal row86 col5" data-value="13">13</td><td class="pvtVal row86 col6 last" data-value="1">1</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 2e kwartaal**</div></th><td class="pvtVal row87 col0" data-value="85">85</td><td class="pvtVal row87 col1" data-value="47">47</td><td class="pvtVal row87 col2" data-value="39">39</td><td class="pvtVal row87 col3" data-value="1">1</td><td class="pvtVal row87 col4" data-value="14">14</td><td class="pvtVal row87 col5" data-value="10">10</td><td class="pvtVal row87 col6 last" data-value="4">4</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 3e kwartaal**</div></th><td class="pvtVal row88 col0" data-value="80">80</td><td class="pvtVal row88 col1" data-value="54">54</td><td class="pvtVal row88 col2" data-value="26">26</td><td class="pvtVal row88 col3" data-value="2">2</td><td class="pvtVal row88 col4" data-value="18">18</td><td class="pvtVal row88 col5" data-value="13">13</td><td class="pvtVal row88 col6 last" data-value="4">4</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Voorlopige cijfers">2022 4e kwartaal*</div></th><td class="pvtVal row89 col0" data-value="73">73</td><td class="pvtVal row89 col1" data-value="52">52</td><td class="pvtVal row89 col2" data-value="20">20</td><td class="pvtVal row89 col3" data-value="3">3</td><td class="pvtVal row89 col4" data-value="24">24</td><td class="pvtVal row89 col5" data-value="17">17</td><td class="pvtVal row89 col6 last" data-value="7">7</td></tr><tr><th class="pvtRowLabel notopics" rowspan="18"><div title="" data-placement="auto" data-original-title="Het aantal &quot;werkzame personen&quot; bestaat uit:<br />- werknemers en directeuren die op de loonlijst staan;<br />- werknemers die op de loonlijst staan van een andere onderneming of instelling, maar bij de eigen onderneming werkzaam zijn en als zodanig in feite tot het personeel behoren (ingeleend personeel);<br />- werkzame eigenaren, firmanten, leden van maatschappen, vennoten en medewerkende gezinsleden;<br />- uitzendkrachten. <br /> <br />Uitgeleend personeel ( Werknemers die...<br /><br /><i>Klik i knop voor volledige info</i>">100 tot 250 werkzame personen</div></th><th class="pvtRowLabel notopics" rowspan="9"><div title="" data-placement="auto" data-original-title="Goederenvervoer over de weg">494 Goederenvervoer over de weg</div></th><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2020 4e kwartaal</div></th><td class="pvtVal row90 col0" data-value="       .">       .</td><td class="pvtVal row90 col1" data-value="       .">       .</td><td class="pvtVal row90 col2" data-value="       .">       .</td><td class="pvtVal row90 col3" data-value="       .">       .</td><td class="pvtVal row90 col4" data-value="       .">       .</td><td class="pvtVal row90 col5" data-value="       .">       .</td><td class="pvtVal row90 col6 last" data-value="       .">       .</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 1e kwartaal</div></th><td class="pvtVal row91 col0" data-value="       .">       .</td><td class="pvtVal row91 col1" data-value="       .">       .</td><td class="pvtVal row91 col2" data-value="       .">       .</td><td class="pvtVal row91 col3" data-value="       .">       .</td><td class="pvtVal row91 col4" data-value="       .">       .</td><td class="pvtVal row91 col5" data-value="       .">       .</td><td class="pvtVal row91 col6 last" data-value="       .">       .</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 2e kwartaal</div></th><td class="pvtVal row92 col0" data-value="       .">       .</td><td class="pvtVal row92 col1" data-value="       .">       .</td><td class="pvtVal row92 col2" data-value="       .">       .</td><td class="pvtVal row92 col3" data-value="       .">       .</td><td class="pvtVal row92 col4" data-value="       .">       .</td><td class="pvtVal row92 col5" data-value="       .">       .</td><td class="pvtVal row92 col6 last" data-value="       .">       .</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 3e kwartaal</div></th><td class="pvtVal row93 col0" data-value="79">79</td><td class="pvtVal row93 col1" data-value="57">57</td><td class="pvtVal row93 col2" data-value="22">22</td><td class="pvtVal row93 col3" data-value="3">3</td><td class="pvtVal row93 col4" data-value="18">18</td><td class="pvtVal row93 col5" data-value="15">15</td><td class="pvtVal row93 col6 last" data-value="3">3</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2021 4e kwartaal**</div></th><td class="pvtVal row94 col0" data-value="85">85</td><td class="pvtVal row94 col1" data-value="56">56</td><td class="pvtVal row94 col2" data-value="28">28</td><td class="pvtVal row94 col3" data-value="3">3</td><td class="pvtVal row94 col4" data-value="12">12</td><td class="pvtVal row94 col5" data-value="9">9</td><td class="pvtVal row94 col6 last" data-value="3">3</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 1e kwartaal**</div></th><td class="pvtVal row95 col0" data-value="88">88</td><td class="pvtVal row95 col1" data-value="51">51</td><td class="pvtVal row95 col2" data-value="37">37</td><td class="pvtVal row95 col3" data-value="3">3</td><td class="pvtVal row95 col4" data-value="10">10</td><td class="pvtVal row95 col5" data-value="6">6</td><td class="pvtVal row95 col6 last" data-value="3">3</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 2e kwartaal**</div></th><td class="pvtVal row96 col0" data-value="83">83</td><td class="pvtVal row96 col1" data-value="49">49</td><td class="pvtVal row96 col2" data-value="35">35</td><td class="pvtVal row96 col3" data-value="3">3</td><td class="pvtVal row96 col4" data-value="13">13</td><td class="pvtVal row96 col5" data-value="13">13</td><td class="pvtVal row96 col6 last" data-value="0">0</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 3e kwartaal**</div></th><td class="pvtVal row97 col0" data-value="88">88</td><td class="pvtVal row97 col1" data-value="59">59</td><td class="pvtVal row97 col2" data-value="29">29</td><td class="pvtVal row97 col3" data-value="1">1</td><td class="pvtVal row97 col4" data-value="11">11</td><td class="pvtVal row97 col5" data-value="9">9</td><td class="pvtVal row97 col6 last" data-value="3">3</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Voorlopige cijfers">2022 4e kwartaal*</div></th><td class="pvtVal row98 col0" data-value="76">76</td><td class="pvtVal row98 col1" data-value="60">60</td><td class="pvtVal row98 col2" data-value="17">17</td><td class="pvtVal row98 col3" data-value="4">4</td><td class="pvtVal row98 col4" data-value="20">20</td><td class="pvtVal row98 col5" data-value="18">18</td><td class="pvtVal row98 col6 last" data-value="3">3</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="9"><div title="" data-placement="auto" data-original-title="Goederenvervoer over de weg (geen verhuizingen)<br />Deze klasse omvat:<br />- ongeregeld goederenvervoer over de weg ongeacht goederensoort en transportmiddel:<br />  w.o. via huifwagens, tankwagens, containers, koelwagens, diepladers enz.;<br />  w.o. vervoer van vee, bulkgoederen, vloeistoffen, stukgoederen enz.;<br />- goederenvervoer over de weg door afhaal- en besteldiensten met een groeperende en distribuerende functie;<br />- bezorgdiensten van producten voor...<br /><br /><i>Klik i knop voor volledige info</i>">4941 Goederenwegvervoer (geen verhuis-)</div></th><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2020 4e kwartaal</div></th><td class="pvtVal row99 col0" data-value="       .">       .</td><td class="pvtVal row99 col1" data-value="       .">       .</td><td class="pvtVal row99 col2" data-value="       .">       .</td><td class="pvtVal row99 col3" data-value="       .">       .</td><td class="pvtVal row99 col4" data-value="       .">       .</td><td class="pvtVal row99 col5" data-value="       .">       .</td><td class="pvtVal row99 col6 last" data-value="       .">       .</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 1e kwartaal</div></th><td class="pvtVal row100 col0" data-value="       .">       .</td><td class="pvtVal row100 col1" data-value="       .">       .</td><td class="pvtVal row100 col2" data-value="       .">       .</td><td class="pvtVal row100 col3" data-value="       .">       .</td><td class="pvtVal row100 col4" data-value="       .">       .</td><td class="pvtVal row100 col5" data-value="       .">       .</td><td class="pvtVal row100 col6 last" data-value="       .">       .</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 2e kwartaal</div></th><td class="pvtVal row101 col0" data-value="       .">       .</td><td class="pvtVal row101 col1" data-value="       .">       .</td><td class="pvtVal row101 col2" data-value="       .">       .</td><td class="pvtVal row101 col3" data-value="       .">       .</td><td class="pvtVal row101 col4" data-value="       .">       .</td><td class="pvtVal row101 col5" data-value="       .">       .</td><td class="pvtVal row101 col6 last" data-value="       .">       .</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 3e kwartaal</div></th><td class="pvtVal row102 col0" data-value="81">81</td><td class="pvtVal row102 col1" data-value="58">58</td><td class="pvtVal row102 col2" data-value="22">22</td><td class="pvtVal row102 col3" data-value="3">3</td><td class="pvtVal row102 col4" data-value="17">17</td><td class="pvtVal row102 col5" data-value="14">14</td><td class="pvtVal row102 col6 last" data-value="3">3</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2021 4e kwartaal**</div></th><td class="pvtVal row103 col0" data-value="84">84</td><td class="pvtVal row103 col1" data-value="55">55</td><td class="pvtVal row103 col2" data-value="29">29</td><td class="pvtVal row103 col3" data-value="3">3</td><td class="pvtVal row103 col4" data-value="13">13</td><td class="pvtVal row103 col5" data-value="9">9</td><td class="pvtVal row103 col6 last" data-value="3">3</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 1e kwartaal**</div></th><td class="pvtVal row104 col0" data-value="88">88</td><td class="pvtVal row104 col1" data-value="53">53</td><td class="pvtVal row104 col2" data-value="35">35</td><td class="pvtVal row104 col3" data-value="3">3</td><td class="pvtVal row104 col4" data-value="10">10</td><td class="pvtVal row104 col5" data-value="6">6</td><td class="pvtVal row104 col6 last" data-value="4">4</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 2e kwartaal**</div></th><td class="pvtVal row105 col0" data-value="84">84</td><td class="pvtVal row105 col1" data-value="49">49</td><td class="pvtVal row105 col2" data-value="35">35</td><td class="pvtVal row105 col3" data-value="3">3</td><td class="pvtVal row105 col4" data-value="13">13</td><td class="pvtVal row105 col5" data-value="13">13</td><td class="pvtVal row105 col6 last" data-value="0">0</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 3e kwartaal**</div></th><td class="pvtVal row106 col0" data-value="88">88</td><td class="pvtVal row106 col1" data-value="59">59</td><td class="pvtVal row106 col2" data-value="29">29</td><td class="pvtVal row106 col3" data-value="1">1</td><td class="pvtVal row106 col4" data-value="11">11</td><td class="pvtVal row106 col5" data-value="8">8</td><td class="pvtVal row106 col6 last" data-value="3">3</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Voorlopige cijfers">2022 4e kwartaal*</div></th><td class="pvtVal row107 col0" data-value="76">76</td><td class="pvtVal row107 col1" data-value="59">59</td><td class="pvtVal row107 col2" data-value="16">16</td><td class="pvtVal row107 col3" data-value="4">4</td><td class="pvtVal row107 col4" data-value="21">21</td><td class="pvtVal row107 col5" data-value="18">18</td><td class="pvtVal row107 col6 last" data-value="3">3</td></tr><tr><th class="pvtRowLabel notopics last" rowspan="18"><div title="" data-placement="auto" data-original-title="Het aantal &quot;werkzame personen&quot; bestaat uit:<br />- werknemers en directeuren die op de loonlijst staan;<br />- werknemers die op de loonlijst staan van een andere onderneming of instelling, maar bij de eigen onderneming werkzaam zijn en als zodanig in feite tot het personeel behoren (ingeleend personeel);<br />- werkzame eigenaren, firmanten, leden van maatschappen, vennoten en medewerkende gezinsleden;<br />- uitzendkrachten. <br /> <br />Uitgeleend personeel ( Werknemers die...<br /><br /><i>Klik i knop voor volledige info</i>">250 of meer werkzame personen</div></th><th class="pvtRowLabel notopics" rowspan="9"><div title="" data-placement="auto" data-original-title="Goederenvervoer over de weg">494 Goederenvervoer over de weg</div></th><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2020 4e kwartaal</div></th><td class="pvtVal row108 col0" data-value="       .">       .</td><td class="pvtVal row108 col1" data-value="       .">       .</td><td class="pvtVal row108 col2" data-value="       .">       .</td><td class="pvtVal row108 col3" data-value="       .">       .</td><td class="pvtVal row108 col4" data-value="       .">       .</td><td class="pvtVal row108 col5" data-value="       .">       .</td><td class="pvtVal row108 col6 last" data-value="       .">       .</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 1e kwartaal</div></th><td class="pvtVal row109 col0" data-value="       .">       .</td><td class="pvtVal row109 col1" data-value="       .">       .</td><td class="pvtVal row109 col2" data-value="       .">       .</td><td class="pvtVal row109 col3" data-value="       .">       .</td><td class="pvtVal row109 col4" data-value="       .">       .</td><td class="pvtVal row109 col5" data-value="       .">       .</td><td class="pvtVal row109 col6 last" data-value="       .">       .</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 2e kwartaal</div></th><td class="pvtVal row110 col0" data-value="       .">       .</td><td class="pvtVal row110 col1" data-value="       .">       .</td><td class="pvtVal row110 col2" data-value="       .">       .</td><td class="pvtVal row110 col3" data-value="       .">       .</td><td class="pvtVal row110 col4" data-value="       .">       .</td><td class="pvtVal row110 col5" data-value="       .">       .</td><td class="pvtVal row110 col6 last" data-value="       .">       .</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 3e kwartaal</div></th><td class="pvtVal row111 col0" data-value="62">62</td><td class="pvtVal row111 col1" data-value="18">18</td><td class="pvtVal row111 col2" data-value="44">44</td><td class="pvtVal row111 col3" data-value="3">3</td><td class="pvtVal row111 col4" data-value="36">36</td><td class="pvtVal row111 col5" data-value="31">31</td><td class="pvtVal row111 col6 last" data-value="5">5</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2021 4e kwartaal**</div></th><td class="pvtVal row112 col0" data-value="76">76</td><td class="pvtVal row112 col1" data-value="38">38</td><td class="pvtVal row112 col2" data-value="38">38</td><td class="pvtVal row112 col3" data-value="0">0</td><td class="pvtVal row112 col4" data-value="24">24</td><td class="pvtVal row112 col5" data-value="19">19</td><td class="pvtVal row112 col6 last" data-value="5">5</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 1e kwartaal**</div></th><td class="pvtVal row113 col0" data-value="88">88</td><td class="pvtVal row113 col1" data-value="34">34</td><td class="pvtVal row113 col2" data-value="54">54</td><td class="pvtVal row113 col3" data-value="0">0</td><td class="pvtVal row113 col4" data-value="12">12</td><td class="pvtVal row113 col5" data-value="7">7</td><td class="pvtVal row113 col6 last" data-value="5">5</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 2e kwartaal**</div></th><td class="pvtVal row114 col0" data-value="78">78</td><td class="pvtVal row114 col1" data-value="20">20</td><td class="pvtVal row114 col2" data-value="59">59</td><td class="pvtVal row114 col3" data-value="7">7</td><td class="pvtVal row114 col4" data-value="15">15</td><td class="pvtVal row114 col5" data-value="5">5</td><td class="pvtVal row114 col6 last" data-value="10">10</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 3e kwartaal**</div></th><td class="pvtVal row115 col0" data-value="75">75</td><td class="pvtVal row115 col1" data-value="32">32</td><td class="pvtVal row115 col2" data-value="42">42</td><td class="pvtVal row115 col3" data-value="2">2</td><td class="pvtVal row115 col4" data-value="22">22</td><td class="pvtVal row115 col5" data-value="15">15</td><td class="pvtVal row115 col6 last" data-value="8">8</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Voorlopige cijfers">2022 4e kwartaal*</div></th><td class="pvtVal row116 col0" data-value="72">72</td><td class="pvtVal row116 col1" data-value="38">38</td><td class="pvtVal row116 col2" data-value="33">33</td><td class="pvtVal row116 col3" data-value="0">0</td><td class="pvtVal row116 col4" data-value="28">28</td><td class="pvtVal row116 col5" data-value="15">15</td><td class="pvtVal row116 col6 last" data-value="13">13</td></tr><tr class="odd"><th class="pvtRowLabel notopics last" rowspan="9"><div title="" data-placement="auto" data-original-title="Goederenvervoer over de weg (geen verhuizingen)<br />Deze klasse omvat:<br />- ongeregeld goederenvervoer over de weg ongeacht goederensoort en transportmiddel:<br />  w.o. via huifwagens, tankwagens, containers, koelwagens, diepladers enz.;<br />  w.o. vervoer van vee, bulkgoederen, vloeistoffen, stukgoederen enz.;<br />- goederenvervoer over de weg door afhaal- en besteldiensten met een groeperende en distribuerende functie;<br />- bezorgdiensten van producten voor...<br /><br /><i>Klik i knop voor volledige info</i>">4941 Goederenwegvervoer (geen verhuis-)</div></th><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2020 4e kwartaal</div></th><td class="pvtVal row117 col0" data-value="       .">       .</td><td class="pvtVal row117 col1" data-value="       .">       .</td><td class="pvtVal row117 col2" data-value="       .">       .</td><td class="pvtVal row117 col3" data-value="       .">       .</td><td class="pvtVal row117 col4" data-value="       .">       .</td><td class="pvtVal row117 col5" data-value="       .">       .</td><td class="pvtVal row117 col6 last" data-value="       .">       .</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 1e kwartaal</div></th><td class="pvtVal row118 col0" data-value="       .">       .</td><td class="pvtVal row118 col1" data-value="       .">       .</td><td class="pvtVal row118 col2" data-value="       .">       .</td><td class="pvtVal row118 col3" data-value="       .">       .</td><td class="pvtVal row118 col4" data-value="       .">       .</td><td class="pvtVal row118 col5" data-value="       .">       .</td><td class="pvtVal row118 col6 last" data-value="       .">       .</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 2e kwartaal</div></th><td class="pvtVal row119 col0" data-value="       .">       .</td><td class="pvtVal row119 col1" data-value="       .">       .</td><td class="pvtVal row119 col2" data-value="       .">       .</td><td class="pvtVal row119 col3" data-value="       .">       .</td><td class="pvtVal row119 col4" data-value="       .">       .</td><td class="pvtVal row119 col5" data-value="       .">       .</td><td class="pvtVal row119 col6 last" data-value="       .">       .</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div data-placement="auto" data-original-title="" title="">2021 3e kwartaal</div></th><td class="pvtVal row120 col0" data-value="62">62</td><td class="pvtVal row120 col1" data-value="18">18</td><td class="pvtVal row120 col2" data-value="44">44</td><td class="pvtVal row120 col3" data-value="3">3</td><td class="pvtVal row120 col4" data-value="36">36</td><td class="pvtVal row120 col5" data-value="31">31</td><td class="pvtVal row120 col6 last" data-value="5">5</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2021 4e kwartaal**</div></th><td class="pvtVal row121 col0" data-value="76">76</td><td class="pvtVal row121 col1" data-value="38">38</td><td class="pvtVal row121 col2" data-value="38">38</td><td class="pvtVal row121 col3" data-value="0">0</td><td class="pvtVal row121 col4" data-value="24">24</td><td class="pvtVal row121 col5" data-value="19">19</td><td class="pvtVal row121 col6 last" data-value="5">5</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 1e kwartaal**</div></th><td class="pvtVal row122 col0" data-value="88">88</td><td class="pvtVal row122 col1" data-value="34">34</td><td class="pvtVal row122 col2" data-value="54">54</td><td class="pvtVal row122 col3" data-value="0">0</td><td class="pvtVal row122 col4" data-value="12">12</td><td class="pvtVal row122 col5" data-value="7">7</td><td class="pvtVal row122 col6 last" data-value="5">5</td></tr><tr class="odd"><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 2e kwartaal**</div></th><td class="pvtVal row123 col0" data-value="78">78</td><td class="pvtVal row123 col1" data-value="20">20</td><td class="pvtVal row123 col2" data-value="59">59</td><td class="pvtVal row123 col3" data-value="7">7</td><td class="pvtVal row123 col4" data-value="15">15</td><td class="pvtVal row123 col5" data-value="5">5</td><td class="pvtVal row123 col6 last" data-value="10">10</td></tr><tr><th class="pvtRowLabel notopics" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Nader voorlopige cijfers">2022 3e kwartaal**</div></th><td class="pvtVal row124 col0" data-value="75">75</td><td class="pvtVal row124 col1" data-value="32">32</td><td class="pvtVal row124 col2" data-value="42">42</td><td class="pvtVal row124 col3" data-value="2">2</td><td class="pvtVal row124 col4" data-value="22">22</td><td class="pvtVal row124 col5" data-value="15">15</td><td class="pvtVal row124 col6 last" data-value="8">8</td></tr><tr class="odd last"><th class="pvtRowLabel notopics last" rowspan="1" colspan="2"><div title="" data-placement="auto" data-original-title="Voorlopige cijfers">2022 4e kwartaal*</div></th><td class="pvtVal row125 col0" data-value="72">72</td><td class="pvtVal row125 col1" data-value="38">38</td><td class="pvtVal row125 col2" data-value="33">33</td><td class="pvtVal row125 col3" data-value="0">0</td><td class="pvtVal row125 col4" data-value="28">28</td><td class="pvtVal row125 col5" data-value="15">15</td><td class="pvtVal row125 col6 last" data-value="13">13</td></tr></tbody></table><div class="source">Bron: CBS</div></body></html><div style="height: 50px;"></div><div style="font-size: 8pt;margin-left: 12px;border-top: 1px solid grey;"><h2 style="margin-top: 1.5em;">Tabeltoelichting</h2><div><pre>INHOUDSOPGAVE
-
-1. Toelichting
-2. Definities en verklaring van symbolen
-3. Koppelingen naar relevante tabellen en artikelen
-4. Bronnen en methoden
-5. Meer informatie 
-
-
-1. TOELICHTING
-Deze tabel geeft informatie over de ontwikkeling van omzetstijging en -daling. De ontwikkeling wordt weergegeven als het percentage bedrijven dat ten opzichte van dezelfde periode een jaar eerder in omzet is gestegen, gedaald of in omzet gelijk is gebleven. De gegevens zijn onderverdeeld in branches volgens de Standaard Bedrijfsindeling (SBI) 2008 en in grootteklassen van het aantal werkzame personen.
-
-Gegevens beschikbaar vanaf: 2012
-
-Status van de cijfers: 
-De cijfers vanaf het vierde kwartaal 2021 zijn voorlopig, de overige definitief. 
-
-Wijzigingen per 28 februari 2023:
-Cijfers van het vierde kwartaal van 2022 zijn toegevoegd.
-
-Wanneer komen er nieuwe cijfers?
-Nieuwe uitkomsten worden circa zestig kalenderdagen na afloop van de verslagperiode (kwartaal) gepubliceerd. Na publicatie van definitieve uitkomsten past het CBS de uitkomsten alleen aan als er grote bijstellingen en/of correcties noodzakelijk zijn.
-
-
-2. DEFINITIES EN VERKLARING VAN SYMBOLEN
-
-Definities:
-
-SBI 2008
-Bedrijfstakken en branches zijn gangbare termen voor groepen van bedrijven ingedeeld naar voornaamste activiteit. Het CBS hanteert voor de indeling van bedrijven naar voornaamste activiteit de zogenoemde Standaard Bedrijfsindeling (SBI). De SBI is een hiërarchische indeling van economische activiteiten. De SBI is gebaseerd op de indeling van de Europese Unie (Nomenclature statistique des activités économiques dans la Communauté Européenne, afgekort: NACE) en op die van de Verenigde Naties (International Standard Classification of All Economic Activities, afgekort: ISIC).
-
-De SBI 2008 kent meerdere niveaus die aangegeven worden door maximaal vijf cijfers. De indeling naar voornaamste activiteit (hoofdactiviteit) betekent dat er bijvoorbeeld in de categorie bouwnijverheid bedrijven kunnen voorkomen die naast bouwactiviteiten ook andere activiteiten (nevenactiviteiten) uitoefenen.
-
-Omzet
-De opbrengst uit verkoop van goederen en diensten aan derden, exclusief BTW. De ontwikkeling van de geldomzet is het resultaat van de ontwikkeling van de hoeveelheden en de prijzen van de verkochte goederen en diensten. De omzet omvat zowel de omzet uit hoofdactiviteiten, als de omzet uit nevenactiviteiten. 
-
-Werkzame personen
-In deze tabel is gekozen om de uitsplitsing in werkzame personen zoveel mogelijk aan te laten sluiten bij verschillende definities over het midden- en kleinbedrijf. De term midden- en kleinbedrijf (MKB) is buiten het CBS geen gestandaardiseerd begrip. Verschillende instanties hanteren afwijkende populatiegrenzen. Dat maakt vergelijking van cijfermateriaal over het MKB lastig. 
-
-Het aantal 'werkzame personen' bestaat uit:
-- werknemers en directeuren die op de loonlijst staan;
-- werknemers die op de loonlijst staan van een andere onderneming of instelling, maar bij de eigen onderneming werkzaam zijn en als zodanig in feite tot het personeel behoren (ingeleend personeel);
-- werkzame eigenaren, firmanten, leden van maatschappen, vennoten en medewerkende gezinsleden;
-- uitzendkrachten.
-Uitgeleend personeel is hierin niet opgenomen.
-
-Uitgeleend personeel
-Werknemers die op de loonlijst staan, maar werken bij een andere onderneming of instelling.
-
-Verklaring van symbolen:
-
-niets (blanco) : het cijfer kan op logische gronden niet voorkomen
-.              : het cijfer is onbekend, onvoldoende betrouwbaar of geheim
-*             : voorlopige cijfers
-**           : nader voorlopige cijfers
-
-In geval van afrondingen kan het voorkomen, dat de totalen niet geheel overeenstemmen met de som der opgetelde getallen.
-
-
-3. KOPPELINGEN NAAR RELEVANTE TABELLEN EN ARTIKELEN
-
-Meer statistische informatie over omzetontwikkeling is te vinden in onderstaande tabellen: 
-
-<a href="https://opendata.cbs.nl/statline/#/CBS/nl/dataset/80351NED">Bedrijfsgegevens; Omzetontwikkeling (stijgers-dalers), 2004 - 2012, SBI 2008.</a>
-
-<a href="https://opendata.cbs.nl/statline/#/CBS/nl/dataset/72004NED">Bouwnijverheid; omzetontwikkeling, SBI 2008</a>.
-
-<a href="https://opendata.cbs.nl/statline/#/CBS/nl/dataset/80050NED">Zakelijke dienstverlening; omzetontwikkeling, SBI 2008</a>.
-
-<a href="https://opendata.cbs.nl/statline/#/CBS/nl/dataset/80065NED">Informatie en communicatie; omzetontwikkeling, SBI 2008</a>.
-
-<a href="https://opendata.cbs.nl/statline/#/CBS/nl/dataset/80049NED">Uitzendbranche; ontwikkeling omzet en uitzenduren, SBI 2008</a>.
-
-
-4. BRONNEN EN METHODEN
-
-Meer informatie over de opzet en methodiek van dit onderzoek is te vinden op de pagina
-<a href="https://www.cbs.nl/nl-nl/onze-diensten/methoden/onderzoeksomschrijvingen/korte-onderzoeksbeschrijvingen/statistiek-stijgers-en-dalers-omzetontwikkeling">Statistiek stijgers en dalers; omzetontwikkeling</a>
-
-Voor informatie over de Standaard Bedrijfsindeling zie <a href="https://www.cbs.nl/nl-nl/onze-diensten/methoden/classificaties/activiteiten/sbi-2008-standaard-bedrijfsindeling-2008 ">SBI 2008- Standaard Bedrijfsindeling 2008</a>
-
-
-5. MEER INFORMATIE
-
-<a href="https://www.cbs.nl/nl-nl/over-ons/contact/infoservice">Infoservice</a>
-
-Copyright © Centraal Bureau voor de Statistiek, Den Haag/Heerlen
-
-Verveelvoudiging is toegestaan, mits het CBS als bron wordt vermeld.
-</pre></div></div><div style="font-size: 8pt;margin-left: 12px;border-top: 1px solid grey;"><h2 style="margin-top: 1.5em;">Onderwerpen/classificaties</h2><ul><li><h5 class="onderwerp">Onderwerpen</h5><ul><li><h5 class="onderwerp">Bedrijven met omzetstijging</h5><pre style="background-color: inherit; padding: 0; border: none;">Percentage bedrijven waarvan de omzet in deze periode met meer dan een half procent is gestegen ten opzichte van de zelfde periode een jaar eerder.
-
-Voor bedrijven met minder dan 50 werkzame personen zijn de gegevens gebaseerd op registerinformatie van de Belastingdienst.
-Voor bedrijven met 50 of meer werkzame personen zijn de gegevens
-gebaseerd op integrale waarneming door het CBS.</pre><ul><li><h5 class="onderwerp">Alle stijgers</h5><pre style="background-color: inherit; padding: 0; border: none;">Percentage bedrijven waarvan de omzet in deze periode met meer dan een half procent is gestegen ten opzichte van de zelfde periode een jaar eerder.
-
-Voor bedrijven met minder dan 50 werkzame personen zijn de gegevens gebaseerd op registerinformatie van de Belastingdienst.
-Voor bedrijven met 50 of meer werkzame personen zijn de gegevens
-gebaseerd op integrale waarneming door het CBS.</pre><ul></ul></li><li><h5 class="onderwerp">Normale stijgers</h5><pre style="background-color: inherit; padding: 0; border: none;">Percentage bedrijven waarvan de omzet in deze periode met meer dan 0,5 en minder dan 20 procent is gestegen ten opzichte van de zelfde periode een jaar eerder.
-
-Voor bedrijven met minder dan 50 werkzame personen zijn de gegevens gebaseerd op registerinformatie van de Belastingdienst.
-Voor bedrijven met 50 of meer werkzame personen zijn de gegevens
-gebaseerd op integrale waarneming door het CBS.</pre><ul></ul></li><li><h5 class="onderwerp">Snelle stijgers</h5><pre style="background-color: inherit; padding: 0; border: none;">Percentage bedrijven waarvan de omzet in deze periode met meer dan twintig procent is gestegen ten opzichte van de zelfde periode een jaar eerder.
-
-Voor bedrijven met minder dan 50 werkzame personen zijn de gegevens gebaseerd op registerinformatie van de Belastingdienst.
-Voor bedrijven met 50 of meer werkzame personen zijn de gegevens
-gebaseerd op integrale waarneming door het CBS.</pre><ul></ul></li></ul></li><li><h5 class="onderwerp">Bedrijven met omzet stabiel</h5><pre style="background-color: inherit; padding: 0; border: none;">Percentage bedrijven waarvan de omzet in deze periode nagenoeg gelijk is gebleven ten opzichte van de zelfde periode een jaar eerder (met minder dan een half procent is gestegen of gedaald).
-
-Voor bedrijven met minder dan 50 werkzame personen zijn de gegevens gebaseerd op registerinformatie van de Belastingdienst.
-Voor bedrijven met 50 of meer werkzame personen zijn de gegevens
-gebaseerd op integrale waarneming door het CBS.</pre><ul></ul></li><li><h5 class="onderwerp">Bedrijven met omzetdaling</h5><pre style="background-color: inherit; padding: 0; border: none;">Percentage bedrijven waarvan de omzet in deze periode met meer dan een half procent is gedaald ten opzichte van de zelfde periode een jaar eerder.
-
-Voor bedrijven met minder dan 50 werkzame personen zijn de gegevens gebaseerd op registerinformatie van de Belastingdienst.
-Voor bedrijven met 50 of meer werkzame personen zijn de gegevens
-gebaseerd op integrale waarneming door het CBS.</pre><ul><li><h5 class="onderwerp">Alle dalers</h5><pre style="background-color: inherit; padding: 0; border: none;">Percentage bedrijven waarvan de omzet in deze periode met meer dan een half procent is gedaald ten opzichte van de zelfde periode een jaar eerder.
-
-Voor bedrijven met minder dan 50 werkzame personen zijn de gegevens gebaseerd op registerinformatie van de Belastingdienst.
-Voor bedrijven met 50 of meer werkzame personen zijn de gegevens
-gebaseerd op integrale waarneming door het CBS.</pre><ul></ul></li><li><h5 class="onderwerp">Normale dalers</h5><pre style="background-color: inherit; padding: 0; border: none;">Percentage bedrijven waarvan de omzet in deze periode met meer dan 0,5 en minder dan 20 procent is gedaald ten opzichte van de zelfde periode een jaar eerder.
-
-Voor bedrijven met minder dan 50 werkzame personen zijn de gegevens gebaseerd op registerinformatie van de Belastingdienst.
-Voor bedrijven met 50 of meer werkzame personen zijn de gegevens
-gebaseerd op integrale waarneming door het CBS.</pre><ul></ul></li><li><h5 class="onderwerp">Snelle dalers</h5><pre style="background-color: inherit; padding: 0; border: none;">Percentage bedrijven waarvan de omzet in deze periode met meer dan twintig procent is gedaald ten opzichte van de zelfde periode een jaar eerder.
-
-Voor bedrijven met minder dan 50 werkzame personen zijn de gegevens gebaseerd op registerinformatie van de Belastingdienst.
-Voor bedrijven met 50 of meer werkzame personen zijn de gegevens
-gebaseerd op integrale waarneming door het CBS.</pre><ul></ul></li></ul></li></ul></li></ul><ul><li><h5 class="onderwerp">Bedrijfsomvang</h5><pre style="background-color: inherit; padding: 0; border: none;"></pre><ul><li><h5 class="onderwerp">Totaal 1 of meer werkzame personen</h5><pre style="background-color: inherit; padding: 0; border: none;">Het aantal "werkzame personen" bestaat uit:
-- werknemers en directeuren die op de loonlijst staan;
-- werknemers die op de loonlijst staan van een andere onderneming of instelling, maar bij de eigen onderneming werkzaam zijn en als zodanig in feite tot het personeel behoren (ingeleend personeel);
-- werkzame eigenaren, firmanten, leden van maatschappen, vennoten en medewerkende gezinsleden;
-- uitzendkrachten. 
- 
-Uitgeleend personeel ( Werknemers die op de loonlijst staan, maar werken bij een andere onderneming of instelling.) is hierin niet opgenomen.</pre><ul></ul></li><li><h5 class="onderwerp">1 werkzame persoon</h5><pre style="background-color: inherit; padding: 0; border: none;">Het aantal "werkzame personen" bestaat uit:
-- werknemers en directeuren die op de loonlijst staan;
-- werknemers die op de loonlijst staan van een andere onderneming of instelling, maar bij de eigen onderneming werkzaam zijn en als zodanig in feite tot het personeel behoren (ingeleend personeel);
-- werkzame eigenaren, firmanten, leden van maatschappen, vennoten en medewerkende gezinsleden;
-- uitzendkrachten. 
- 
-Uitgeleend personeel ( Werknemers die op de loonlijst staan, maar werken bij een andere onderneming of instelling.) is hierin niet opgenomen.</pre><ul></ul></li><li><h5 class="onderwerp">2 tot 10 werkzame personen</h5><pre style="background-color: inherit; padding: 0; border: none;">Het aantal "werkzame personen" bestaat uit:
-- werknemers en directeuren die op de loonlijst staan;
-- werknemers die op de loonlijst staan van een andere onderneming of instelling, maar bij de eigen onderneming werkzaam zijn en als zodanig in feite tot het personeel behoren (ingeleend personeel);
-- werkzame eigenaren, firmanten, leden van maatschappen, vennoten en medewerkende gezinsleden;
-- uitzendkrachten. 
- 
-Uitgeleend personeel ( Werknemers die op de loonlijst staan, maar werken bij een andere onderneming of instelling.) is hierin niet opgenomen.</pre><ul></ul></li><li><h5 class="onderwerp">10 tot 50 werkzame personen</h5><pre style="background-color: inherit; padding: 0; border: none;">Het aantal "werkzame personen" bestaat uit:
-- werknemers en directeuren die op de loonlijst staan;
-- werknemers die op de loonlijst staan van een andere onderneming of instelling, maar bij de eigen onderneming werkzaam zijn en als zodanig in feite tot het personeel behoren (ingeleend personeel);
-- werkzame eigenaren, firmanten, leden van maatschappen, vennoten en medewerkende gezinsleden;
-- uitzendkrachten. 
- 
-Uitgeleend personeel ( Werknemers die op de loonlijst staan, maar werken bij een andere onderneming of instelling.) is hierin niet opgenomen.</pre><ul></ul></li><li><h5 class="onderwerp">50 tot 100 werkzame personen</h5><pre style="background-color: inherit; padding: 0; border: none;">Het aantal "werkzame personen" bestaat uit:
-- werknemers en directeuren die op de loonlijst staan;
-- werknemers die op de loonlijst staan van een andere onderneming of instelling, maar bij de eigen onderneming werkzaam zijn en als zodanig in feite tot het personeel behoren (ingeleend personeel);
-- werkzame eigenaren, firmanten, leden van maatschappen, vennoten en medewerkende gezinsleden;
-- uitzendkrachten. 
- 
-Uitgeleend personeel ( Werknemers die op de loonlijst staan, maar werken bij een andere onderneming of instelling.) is hierin niet opgenomen.</pre><ul></ul></li><li><h5 class="onderwerp">100 tot 250 werkzame personen</h5><pre style="background-color: inherit; padding: 0; border: none;">Het aantal "werkzame personen" bestaat uit:
-- werknemers en directeuren die op de loonlijst staan;
-- werknemers die op de loonlijst staan van een andere onderneming of instelling, maar bij de eigen onderneming werkzaam zijn en als zodanig in feite tot het personeel behoren (ingeleend personeel);
-- werkzame eigenaren, firmanten, leden van maatschappen, vennoten en medewerkende gezinsleden;
-- uitzendkrachten. 
- 
-Uitgeleend personeel ( Werknemers die op de loonlijst staan, maar werken bij een andere onderneming of instelling.) is hierin niet opgenomen.</pre><ul></ul></li><li><h5 class="onderwerp">250 of meer werkzame personen</h5><pre style="background-color: inherit; padding: 0; border: none;">Het aantal "werkzame personen" bestaat uit:
-- werknemers en directeuren die op de loonlijst staan;
-- werknemers die op de loonlijst staan van een andere onderneming of instelling, maar bij de eigen onderneming werkzaam zijn en als zodanig in feite tot het personeel behoren (ingeleend personeel);
-- werkzame eigenaren, firmanten, leden van maatschappen, vennoten en medewerkende gezinsleden;
-- uitzendkrachten. 
- 
-Uitgeleend personeel ( Werknemers die op de loonlijst staan, maar werken bij een andere onderneming of instelling.) is hierin niet opgenomen.</pre><ul></ul></li></ul></li><li><h5 class="onderwerp">Bedrijfstakken/branches (SBI 2008)</h5><pre style="background-color: inherit; padding: 0; border: none;"></pre><ul><li><h5 class="onderwerp">494 Goederenvervoer over de weg</h5><pre style="background-color: inherit; padding: 0; border: none;">Goederenvervoer over de weg</pre><ul></ul></li><li><h5 class="onderwerp">4941 Goederenwegvervoer (geen verhuis-)</h5><pre style="background-color: inherit; padding: 0; border: none;">Goederenvervoer over de weg (geen verhuizingen)
-Deze klasse omvat:
-- ongeregeld goederenvervoer over de weg ongeacht goederensoort en transportmiddel:
-  w.o. via huifwagens, tankwagens, containers, koelwagens, diepladers enz.;
-  w.o. vervoer van vee, bulkgoederen, vloeistoffen, stukgoederen enz.;
-- goederenvervoer over de weg door afhaal- en besteldiensten met een groeperende en distribuerende functie;
-- bezorgdiensten van producten voor winkeliers, horecabedrijven e.d. zoals bloemen, witgoed, pizza's enz.;
-- wegvervoer van afval in opdracht van inzamelaars, verwerkers e.d.;
-- verhuur van vracht- en bestelauto's met chauffeur (verchartering);
-- verhuur van trekkers met chauffeur (verchartering);
-- auto's ergens heen brengen of afhalen.
-
-Deze klasse omvat niet:
-- inzamelen van afval, ook via afzetbakken en wisselcontainers (38.11);
-- verhuizen van inboedels, vervoer van piano's en plaatsen en ophalen van verhuiscontainers (49.42);;
-- lokale postdiensten (53.20.1);
-- koeriersdiensten (53.20.2);
-- verhuur van vracht- en bestelauto's zonder chauffeur (77.12).</pre><ul></ul></li></ul></li><li><h5 class="onderwerp">Perioden</h5><pre style="background-color: inherit; padding: 0; border: none;"></pre><ul><li><h5 class="onderwerp">2020 4e kwartaal</h5><pre style="background-color: inherit; padding: 0; border: none;"></pre><ul></ul></li><li><h5 class="onderwerp">2021 1e kwartaal</h5><pre style="background-color: inherit; padding: 0; border: none;"></pre><ul></ul></li><li><h5 class="onderwerp">2021 2e kwartaal</h5><pre style="background-color: inherit; padding: 0; border: none;"></pre><ul></ul></li><li><h5 class="onderwerp">2021 3e kwartaal</h5><pre style="background-color: inherit; padding: 0; border: none;"></pre><ul></ul></li><li><h5 class="onderwerp">2021 4e kwartaal**</h5><pre style="background-color: inherit; padding: 0; border: none;">Nader voorlopige cijfers</pre><ul></ul></li><li><h5 class="onderwerp">2022 1e kwartaal**</h5><pre style="background-color: inherit; padding: 0; border: none;">Nader voorlopige cijfers</pre><ul></ul></li><li><h5 class="onderwerp">2022 2e kwartaal**</h5><pre style="background-color: inherit; padding: 0; border: none;">Nader voorlopige cijfers</pre><ul></ul></li><li><h5 class="onderwerp">2022 3e kwartaal**</h5><pre style="background-color: inherit; padding: 0; border: none;">Nader voorlopige cijfers</pre><ul></ul></li><li><h5 class="onderwerp">2022 4e kwartaal*</h5><pre style="background-color: inherit; padding: 0; border: none;">Voorlopige cijfers</pre><ul></ul></li></ul></li></ul></div>
