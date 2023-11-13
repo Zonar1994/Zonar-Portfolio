@@ -19,6 +19,8 @@
 
     <!-- modernizr -->
     <script src="js/modernizr.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -136,7 +138,7 @@
 
                     <div class="col-md-12">
                         <div class="icon-container">
-                            <h3><strong>Societal Impact</strong></h3><h4>Self assessment: <b>Undefined</b></h4>
+                            <h3><strong>Societal Impact</strong></h3><h4>Self assessment: <b>beginning</b></h4>
                             <i class="fa fa-info-circle"></i>
                             <span class="pop-up-text">The student understands the various angles from which their AI
                                 projects can have a sustainable impact on society. They're also conscious of the legal
@@ -148,7 +150,29 @@
                             unimaginable consequences that could end them.
                             I care deeply about the impact of AI and am constantly thinking about ensuring that its use
                             is ethical and aligns with our morals and values.</p>
-
+                            <i class="fa fa-info-circle"></i>
+                            <span class="pop-up-text">Understanding the societal impact of AI projects from different perspectives.</span>
+                        </div>
+                        <ul>
+                            <li>
+                                <strong>"Tree of Thoughts" Methodology (ToT):</strong>
+                                <ul>
+                                    <li><strong>Purpose:</strong> I applied the ToT methodology to improve AI's problem-solving capabilities by fostering a more human-like decision-making process. This involved considering various options and outcomes before reaching a conclusion.F</li>
+                                    <li><strong>How:</strong>Conducted a QUICKSCAN using the TICT framework, answering questions designed to assess the societal impact and potential risks associated with the application of the ToT methodology in AI systems.</li>
+                                    <li><strong>Societal Impact:</strong> Improved AI capabilities benefit various sectors by addressing complex problems more effectively, increasing the usefulness and effectiveness of AI technologies.</li>
+                                    <li><strong>Reference:</strong> <a href="source-link">TICT Personal Project QUICKSCAN</a>.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Omroep Brabant's AI System for News Generation:</strong>
+                                <ul>
+                                    <li><strong>Purpose:</strong> Enhance the AI system used by Omroep Brabant for generating news stories, with a focus on improving fact-checking to ensure accuracy and reliability.</li>
+                                    <li><strong>How It Was Done:</strong> Integrated better fact-checking capabilities into the AI system, which initially struggled with verifying the accuracy of information sourced from the internet.</li>
+                                    <li><strong>Societal Impact:</strong> Assisting journalists in working more efficiently by reducing the time spent on fact-checking, ensuring accurate news dissemination, and building trust with the audience by combating misinformation.</li>
+                                    <li><strong>Reference:</strong> <a href="source-link">TICT Untitled QUICKSCAN</a>.</li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
 
 
@@ -164,6 +188,41 @@
                             is to identify what's lacking in existing models and find ways to improve that. This should
                             help the AI to think more clearly and make smarter choices. While making the models smarter
                             is exciting, it's also key to keep them easy to understand and use.</p>
+                            <h2>Investigative Problem Solving</h2>
+        <div class="purpose">
+            <h3>Purpose</h3>
+            <p>To enhance AI's problem-solving abilities by enabling a more human-like approach to decision-making, where AI can consider different options before making decisions.</p>
+        </div>
+        <div class="how-it-was-done">
+            <h3>How It Was Done</h3>
+            <p>Developed and addressed "How Might We" questions to drive the exploration of innovative solutions in AI. For example, to tackle model explainability in AI, I investigated and applied the "Tree of Thoughts" methodology. This approach diverges from traditional linear AI processes, creating a more effective way for AI to handle complex tasks.</p>
+        </div>
+        <div class="societal-impact">
+            <h3>Societal Impact</h3>
+            <p>By improving AI's ability to solve problems through enhanced explainability, we contribute to various sectors by providing more effective and useful AI technologies. This ultimately aids society by making complex AI more accessible and trustworthy.</p>
+        </div>
+        <div class="reference">
+            <h3>Reference</h3>
+            <p>Utilized the "How Might We" technique as outlined by <a href="https://conceptboard.com/blog/how-might-we-template/" target="_blank">Conceptboard</a> to foster creative and open-ended problem-solving​.</p>
+        </div>
+                            <div class="mermaid">
+                                graph TD
+    A[Input: Solve for x in the equation 3x^2 - 12x + 9 = 0] --> B[Plan A: Factoring]
+    A --> C[Plan B: Quadratic Formula]
+    A --> D[Plan C: Graphing]
+    B --> E[Outcome A]
+    C --> F[Outcome B]
+    D --> G[Outcome C]
+    E --> H[Rate A: High]
+    F --> I[Rate B: Medium]
+    G --> J[Rate C: Low]
+    H --> K[Execute Plan A]
+    I --> L[Re-evaluate]
+    J --> L[Re-evaluate]
+    K --> M[Output: Final Solution]
+
+                            </div>
+                            
                     </div>
 
                     <div class="col-md-12">

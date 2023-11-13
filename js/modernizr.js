@@ -293,6 +293,18 @@ window.Modernizr = (function( window, document, undefined ) {
       };
     }
 
+    document.addEventListener("DOMContentLoaded", function() {
+      setTimeout(function() {
+          document.getElementById("midImage").style.opacity = "1";
+          
+          setTimeout(function() {
+              document.getElementById("clearImage").style.opacity = "1";
+          }, 2000); // Wait 2 seconds to show the slightly pixelated version
+  
+      }, 2000); // Wait 2 seconds to show the heavily pixelated version
+  });
+  
+  
     /**
      * setCss applies given styles to the Modernizr DOM node.
      */
