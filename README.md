@@ -10,27 +10,26 @@ import pandas as pd
 data = pd.read_csv('path_to_your_file.csv')
 
 # Convert relevant columns
-data['DATETIME_STRING'] = pd.to_datetime(data['DATETIME_STRING'], errors='coerce', utc=True)
-data['TOTALDISTANCE'] = pd.to_numeric(data['TOTALDISTANCE'], errors='coerce')
+data['DATETIME_STRING'] = pd.to_datetime(data['DATETIME_STRING'], errors='coerce')
+data['TOTALDISTANCE_1'] = pd.to_numeric(data['TOTALDISTANCE_1'], errors='coerce')
 
-# Filter out rows with empty values in 'TRIPID', 'VID', or 'TOTALDISTANCE'
-data = data.dropna(subset=['TRIPID', 'VID', 'TOTALDISTANCE'])
+# Filter out rows with empty values in 'TRIPID', 'VID', or 'TOTALDISTANCE_1'
+data = data.dropna(subset=['TRIPID', 'VID', 'TOTALDISTANCE_1'])
 
-# Sort the data by 'VID' and 'DATETIME_STRING' to ensure chronological order
-data = data.sort_values(by=['VID', 'DATETIME_STRING'])
+# Sort the data by 'VID', 'TRIPID', and 'DATETIME_STRING' to ensure chronological order
+data = data.sort_values(by=['VID', 'TRIPID', 'DATETIME_STRING'])
 
-# Calculate the difference in 'TOTALDISTANCE' for each trip
-data['Trip_Distance_Change'] = data.groupby(['VID', 'TRIPID'])['TOTALDISTANCE'].diff()
+# Group by 'VID' and 'TRIPID' and get the first and last value of 'TOTALDISTANCE_1' for each group
+grouped = data.groupby(['VID', 'TRIPID'])['TOTALDISTANCE_1']
+trip_summary = grouped.agg(Start_Distance='first', End_Distance='last').reset_index()
 
-# For the start of each trip, the diff will be NaN, so we fill it with the original TOTALDISTANCE
-data['Trip_Distance_Change'] = data.groupby(['VID', 'TRIPID'])['Trip_Distance_Change'].apply(lambda x: x.fillna(x.iloc[0]))
+# Calculate the distance traveled for each trip
+trip_summary['Trip_Distance'] = trip_summary['End_Distance'] - trip_summary['Start_Distance']
 
-# Sum these differences for each trip to get the total trip distance
-trip_summary = data.groupby(['VID', 'TRIPID']).agg(
-    Start_Time=('DATETIME_STRING', 'first'),
-    Finish_Time=('DATETIME_STRING', 'last'),
-    Trip_Distance=('Trip_Distance_Change', 'sum')
-).reset_index()
+# Add start and finish times for each trip
+trip_times = data.groupby(['VID', 'TRIPID'])['DATETIME_STRING'].agg(Start_Time='min', Finish_Time='max').reset_index()
+trip_summary = pd.merge(trip_summary, trip_times, on=['VID', 'TRIPID'])
 
 # Display the trip summary
 print(trip_summary)
+
