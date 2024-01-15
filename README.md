@@ -1,36 +1,29 @@
-import pandas as pd
-import folium
+import geopy.distance
 
-# Correct column names based on the previous data snippet you provided
-latitude_column = 'GPSLATITUDE'
-longitude_column = 'GPSLONGITUDE'
-timestamp_column = 'DATETIME_STRING'
+# Function to calculate distance between two GPS coordinates
+def calculate_distance(coord1, coord2):
+    return geopy.distance.distance(coord1, coord2).km
 
-# Load your data from the Excel file
-data = pd.read_excel('zonar.xlsx', engine='openpyxl')  # Make sure the file path is correct
+# Thresholds
+distance_threshold = 0.1  # in kilometers, adjust as needed
+time_threshold = 300  # in seconds, adjust as needed
 
-# Now we filter out the header rows
-data = data.iloc[4:]  # Adjust the row number to skip headers accordingly
+# Adding new columns for shifted latitude and longitude
+data['prev_latitude'] = data[latitude_column].shift(1)
+data['prev_longitude'] = data[longitude_column].shift(1)
 
-# Convert the GPS coordinate columns to float and handle NaN values
-data[latitude_column] = pd.to_numeric(data[latitude_column], errors='coerce')
-data[longitude_column] = pd.to_numeric(data[longitude_column], errors='coerce')
+# Calculate time difference in seconds
+data['time_diff'] = pd.to_datetime(data[timestamp_column]).diff().dt.total_seconds().fillna(0)
 
-# Remove rows with missing latitude or longitude values
-data = data.dropna(subset=[latitude_column, longitude_column])
+# Calculate distance between consecutive points
+data['distance_diff'] = data.apply(lambda row: calculate_distance(
+    (row[latitude_column], row[longitude_column]),
+    (row['prev_latitude'], row['prev_longitude'])
+), axis=1)
 
-# Check if there are any valid GPS coordinates
-if not data.empty:
-    # Initialize the map to the first coordinates in the dataset
-    latitude = data[latitude_column]
-    longitude = data[longitude_column]
-    m = folium.Map(location=[latitude.iloc[0], longitude.iloc[0]], zoom_start=12)
+# Identify stops
+data['is_stop'] = (data['distance_diff'] <= distance_threshold) & (data['time_diff'] >= time_threshold)
 
-    # Add markers to the map for each GPS coordinate
-    for idx, row in data.iterrows():
-        folium.Marker(location=[row[latitude_column], row[longitude_column]]).add_to(m)
-else:
-    print("No valid GPS coordinates available to plot.")
+# Filter stops
+stops = data[data['is_stop']]
 
-# Display the map
-m
