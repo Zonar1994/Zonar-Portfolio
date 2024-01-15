@@ -1,30 +1,37 @@
 import pandas as pd
-import matplotlib.pyplot as plt
+import folium
+from folium.plugins import HeatMap
 
-# Load your data
-data = pd.read_csv('your_data.csv')  # replace with your file path
+# Correct column names based on the previous data snippet you provided
+latitude_column = 'GPSLATITUDE'
+longitude_column = 'GPSLONGITUDE'
+timestamp_column = 'DATETIME_STRING'
 
-# Convert TOTALDISTANCE to numeric, if not already
-data['TOTALDISTANCE'] = pd.to_numeric(data['TOTALDISTANCE'], errors='coerce')
+# Load your data from the CSV file
+data = pd.read_csv('your_data.csv')  # Replace 'your_data.csv' with the path to your CSV file
 
-# Define distance bins (adjust the bins according to your data's range and distribution)
-bins = pd.interval_range(start=0, end=60000, freq=6000)  # Creates 10 bins from 0 to 60,000
-data['Distance_Category'] = pd.cut(data['TOTALDISTANCE'], bins=bins)
+# Convert the 'DATETIME_STRING' column to datetime format
+data[timestamp_column] = pd.to_datetime(data[timestamp_column], errors='coerce')
 
-# Group by Distance_Category and VID, then count unique VIDs
-distance_truck_counts = data.groupby('Distance_Category')['VID'].nunique().reset_index()
+# Filter out rows with missing or invalid GPS coordinates
+data = data.dropna(subset=[latitude_column, longitude_column])
 
-# Rename columns for clarity
-distance_truck_counts.columns = ['Distance_Category', 'Number_of_Trucks']
+# Create a map centered around the mean coordinates of the dataset
+m = folium.Map(location=[data[latitude_column].mean(), data[longitude_column].mean()], zoom_start=10)
 
+# Extract month and year from the timestamp
+data['Month'] = data[timestamp_column].dt.month
+data['Year'] = data[timestamp_column].dt.year
 
-# Plotting
-plt.figure(figsize=(10, 6))
-plt.bar(distance_truck_counts['Distance_Category'].astype(str), distance_truck_counts['Number_of_Trucks'])
+# Define a list of unique months and years in the data
+unique_months_years = data[['Month', 'Year']].drop_duplicates()
 
-plt.xlabel('Total Distance Categories')
-plt.ylabel('Number of Trucks')
-plt.title('Distribution of Trucks Across Distance Categories')
-plt.xticks(rotation=45)
-plt.tight_layout()
-plt.show()
+# Loop through unique months and years to create heatmaps
+for idx, row in unique_months_years.iterrows():
+    month_data = data[(data['Month'] == row['Month']) & (data['Year'] == row['Year'])]
+    
+    # Create a heatmap layer for the current month
+    HeatMap(month_data[[latitude_column, longitude_column]].values).add_to(m)
+
+# Save or display the map
+m.save('heatmaps.html')  # Save the map with heatmaps to an HTML file
