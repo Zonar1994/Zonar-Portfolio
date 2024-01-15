@@ -1,21 +1,30 @@
-import folium
+import pandas as pd
+import matplotlib.pyplot as plt
 
-# Function to create a map for a given category of trips
-def create_trip_map(category):
-    # Filter trips in the selected category
-    category_trips = trip_summary[trip_summary['Distance_Category'] == category]
+# Load your data
+data = pd.read_csv('your_data.csv')  # replace with your file path
 
-    # Create a map centered around the average coordinates
-    m = folium.Map(location=[category_trips['Start_Lat'].mean(), category_trips['Start_Lng'].mean()], zoom_start=6)
+# Convert TOTALDISTANCE to numeric, if not already
+data['TOTALDISTANCE'] = pd.to_numeric(data['TOTALDISTANCE'], errors='coerce')
 
-    # Add start and end points for each trip
-    for _, trip in category_trips.iterrows():
-        folium.Marker(location=[trip['Start_Lat'], trip['Start_Lng']], icon=folium.Icon(color='green')).add_to(m)
-        folium.Marker(location=[trip['End_Lat'], trip['End_Lng']], icon=folium.Icon(color='red')).add_to(m)
-    
-    # Save the map to an HTML file
-    m.save(f'map_category_{category}.html')
+# Define distance bins (adjust the bins according to your data's range and distribution)
+bins = pd.interval_range(start=0, end=60000, freq=6000)  # Creates 10 bins from 0 to 60,000
+data['Distance_Category'] = pd.cut(data['TOTALDISTANCE'], bins=bins)
 
-# Create and save maps for each category
-for category in range(10):
-    create_trip_map(category)
+# Group by Distance_Category and VID, then count unique VIDs
+distance_truck_counts = data.groupby('Distance_Category')['VID'].nunique().reset_index()
+
+# Rename columns for clarity
+distance_truck_counts.columns = ['Distance_Category', 'Number_of_Trucks']
+
+
+# Plotting
+plt.figure(figsize=(10, 6))
+plt.bar(distance_truck_counts['Distance_Category'].astype(str), distance_truck_counts['Number_of_Trucks'])
+
+plt.xlabel('Total Distance Categories')
+plt.ylabel('Number of Trucks')
+plt.title('Distribution of Trucks Across Distance Categories')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
