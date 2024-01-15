@@ -1,37 +1,12 @@
-import pandas as pd
-import folium
-from folium import PolyLine
+Data Preparation and Cleaning:
+My approach to handling the DAF trucks' data began with meticulous data preparation and cleaning. This involved importing data from a CSV file and carefully converting crucial columns, ensuring that 'DATETIME_STRING' was correctly formatted as datetime and 'TOTALDISTANCE' as numeric. This step was critical to establish a reliable foundation for accurate analysis.
 
-# Correct column names based on your data
-latitude_column = 'GPSLATITUDE'
-longitude_column = 'GPSLONGITUDE'
-timestamp_column = 'DATETIME_STRING'
-trip_id_column = 'TRIPID'
+Mapping and Visualization:
+Using Folium, I developed interactive maps to visually represent the trucks' routes. This process was not just about plotting points; it involved a detailed examination of the spatial patterns of the trucks' movements, providing valuable insights into their operational routes.
 
-# Load your data from the CSV file
-data = pd.read_csv('your_data.csv')  # Replace 'your_data.csv' with the path to your CSV file
+Analysis (Enhanced)
+Trip Summary and Distance Analysis:
+In my analysis, I focused on compiling a comprehensive trip summary, grouping the data by 'TRIPID' and 'VID'. This allowed me to extract important details like trip start and finish times and to calculate the distances traveled. Understanding these aspects was crucial in identifying the most and least efficient routes.
 
-# Convert the 'DATETIME_STRING' column to datetime format
-data[timestamp_column] = pd.to_datetime(data[timestamp_column], errors='coerce')
-
-# Create a map for each month
-for year in range(2021, 2023):  # Adjust the range to cover the years in your data
-    for month in range(1, 13):
-        # Filter data for the current month and year
-        filtered_data = data[(data[timestamp_column].dt.year == year) & (data[timestamp_column].dt.month == month)]
-
-        # Check if there are any valid GPS coordinates and trip IDs
-        if not filtered_data.empty and trip_id_column in filtered_data.columns:
-            # Initialize the map to the first coordinates in the dataset
-            latitude = filtered_data[latitude_column]
-            longitude = filtered_data[longitude_column]
-            m = folium.Map(location=[latitude.iloc[0], longitude.iloc[0]], zoom_start=12)
-
-            # Group data by trip ID and plot routes with different colors
-            for trip_id, trip_data in filtered_data.groupby(trip_id_column):
-                route_coordinates = list(zip(trip_data[latitude_column], trip_data[longitude_column]))
-                line_color = '#' + trip_id[-6:]  # Use the last 6 characters of the trip ID as a color
-                PolyLine(route_coordinates, color=line_color).add_to(m)
-
-            # Display the map in the notebook
-            display(m)
+Heatmaps and Route Visualization:
+The creation of heatmaps was a significant part of my analysis, offering a clear visualization of truck location density and movement patterns. These heatmaps, when overlaid with traffic data, provided a unique perspective on the correlation between truck routes and traffic congestion.
