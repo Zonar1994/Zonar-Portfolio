@@ -1,6 +1,8 @@
 import pandas as pd
 import folium
 from folium.plugins import HeatMap
+import calendar
+from IPython.display import display
 
 # Correct column names based on the previous data snippet you provided
 latitude_column = 'GPSLATITUDE'
@@ -23,15 +25,17 @@ m = folium.Map(location=[data[latitude_column].mean(), data[longitude_column].me
 data['Month'] = data[timestamp_column].dt.month
 data['Year'] = data[timestamp_column].dt.year
 
-# Define a list of unique months and years in the data
+# Loop through unique months and years to create and display heatmaps
 unique_months_years = data[['Month', 'Year']].drop_duplicates()
-
-# Loop through unique months and years to create heatmaps
 for idx, row in unique_months_years.iterrows():
     month_data = data[(data['Month'] == row['Month']) & (data['Year'] == row['Year'])]
-    
-    # Create a heatmap layer for the current month
-    HeatMap(month_data[[latitude_column, longitude_column]].values).add_to(m)
 
-# Save or display the map
-m.save('heatmaps.html')  # Save the map with heatmaps to an HTML file
+    # Create a heatmap layer for the current month
+    heatmap_data = month_data[[latitude_column, longitude_column]].values.tolist()
+    HeatMap(heatmap_data).add_to(m)
+    
+    # Display the map for the current month
+    display(m)
+    
+    # Create a new map for the next month
+    m = folium.Map(location=[data[latitude_column].mean(), data[longitude_column].mean()], zoom_start=10)
